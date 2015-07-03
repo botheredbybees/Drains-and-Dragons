@@ -8,3 +8,6 @@ meteor-platform
 autopublish
 insecure
 mrt:leaflet
+bootstrap
+http
+accounts-password

@@ -1,0 +1,5 @@
+to back up your local database cd to the application root and run:
+ mongodump -h 127.0.0.1:3001 -d meteor -o meteor
+
+to restore run:
+mongorestore --port 3001 data/mongodb-backup

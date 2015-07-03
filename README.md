@@ -7,7 +7,7 @@ This is a team repository for govHack 2015
 
 * Brian - ba.jones@gmail.com
 
-* Peter
+* Peter - botheredbybees@gmail.com
 
 * Robin
 

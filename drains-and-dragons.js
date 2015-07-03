@@ -1,19 +1,23 @@
+var hbrtLL = [-42.8806, 147.3250];
+var zoom = 13;
 
-
-$(window).resize(function () {
-  var h = $(window).height(), offsetTop = 90; // Calculate the top offset
-  $mc = $('#map_canvas');
-  $mc.css('height', (h - offsetTop));
-}).resize();
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // code to run on server at startup
+    //startup code
   });
 }
-map = L.map($('#map_canvas'), {
-  doubleClickZoom: false,
-  touchZoom: false
-}).setView(new L.LatLng(-42.8806, 147.3250), 13);
+if (Meteor.isClient) {
+  Meteor.startup(function () {
+    Template.map.onRendered = function(){
+    map = L.map('map_canvas').setView(hbrtLL, zoom);
+    }
 
-L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {opacity: .5}).addTo(map);
+  $(window).resize(function () {
+    var h = $(window).height(), offsetTop = 90; // Calculate the top offset
+    $mc = $('#map_canvas');
+    $mc.css('height', (h - offsetTop));
+  }).resize();
+
+  });
+}

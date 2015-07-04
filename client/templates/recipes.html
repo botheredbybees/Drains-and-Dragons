@@ -1,16 +1,30 @@
 <template name="recipes">
   <div class="page recipes">
-    {{> nav title='Recipes' black=true}}
+    {{> nav title='Quests' black=true}}
 
     <div class="content-scrollable">
-      <div class="list-recipes">
-        {{#each this}}
+      <div class="list-quests">
+        <!--{{#each this}}
           {{#if highlighted}}
             {{> recipeItem recipe=this size='large'}}
           {{else}}
             {{> recipeItem recipe=this size='small'}}
           {{/if}}
-        {{/each}}
+        {{/each}}-->
+        <h2>Glenorchy</h2>
+        <ul class="questlist">
+          <li>Artworks</li>
+          <li>BBQs</li>
+          <li>Stormwater Pits</li>
+        </ul>
+        <h2>Hobart</h2>
+        <ul class="questlist">
+          <li>Significant Trees</li>
+          <li>Toilets</li>
+          <li>Litter Bins</li>
+          <li>Parks</li>
+          <li>Urban Art</li>
+        </ul>
       </div>
     </div>
 

@@ -1,0 +1,25 @@
+to back up your local database cd to the application root and run:
+ mongodump -h 127.0.0.1:3001 -d meteor -o meteor
+
+to restore, run:
+mongorestore --port 3001 data/mongodb-backup
+
+
+To query for points near a geo location:
+from the meteor project directory enter: meteor mongo
+ on the mongodb command line enter something like: 
+
+db.pits.ensureIndex({ "geometry": "2dsphere" })
+
+ db.pits.find(
+   { geometry :
+       { $near :
+          {
+            $geometry : {
+               type : "Point" ,
+               coordinates : [147.276568, -42.831024] },
+            $maxDistance : 10
+          }
+       }
+    }
+)

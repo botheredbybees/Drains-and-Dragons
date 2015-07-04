@@ -1,9 +1,9 @@
 App.info({
-  name: 'Local Market',
-  description: 'A recipe sharing app made in Meteor.',
-  author: 'Percolate Studio Team',
-  email: 'us@percolatestudio.com',
-  website: 'http://percolatestudio.com',
+  name: 'Drains and Dragons',
+  description: 'Promoting civil works awareness one drain at a time',
+  author: 'GovHack 2015 team: Drains and Dungeons',
+  email: 'botheredbybees@gmail.com',
+  website: 'http://drains-and-dungeons.meteor.com',
   version: '0.0.1'
 });
 

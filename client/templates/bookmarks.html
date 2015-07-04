@@ -5,7 +5,13 @@
     <div class="content-scrollable">
       <div class="list-recipes">
         {{#each this}}
-          {{> recipeItem recipe=this size='large'}}
+          <!--{{> recipeItem recipe=this size='large'}}-->
+          
+          <div class="wrapper-message">
+            <div class="title-message">No badges earned yet</div>
+            <div class="subtitle-message">Hack some waypoints to gain badges <a href="{{pathFor 'home'}}">Return home</a></div>
+
+          </div>
         {{else}}
           <div class="wrapper-message">
             <div class="title-message">No badges earned yet</div>

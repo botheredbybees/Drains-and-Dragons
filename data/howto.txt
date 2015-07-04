@@ -23,3 +23,10 @@ db.pits.ensureIndex({ "geometry": "2dsphere" })
        }
     }
 )
+
+
+when creating new collections from kmz files
+use http://ogre.adc4gis.com/
+set the source srs to CRS:84
+and the target srs to WGS84
+be prepared to do a lot of masaging of html riddled data

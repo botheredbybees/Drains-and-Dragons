@@ -1,4 +1,4 @@
-# Drains and Dragons
+# Drains-and-dungeons
 This is a team repository for govHack 2015
 
 A mobile augmented reality game using local government datasets to create a simple 'Dungeons and Dragons' hack and slash fest.
@@ -24,7 +24,7 @@ If you fork or download the code you'll need to feed your server side database. 
 * Robin - robin@sproutlabs.com.au
 
 ##Team Page
-[the blog](http://drainsndragons.blogspot.com.au/2015/07/welcome-to-drains-and-dungeons-8pm.html)
+[The blog](http://drainsndragons.blogspot.com.au/2015/07/welcome-to-drains-and-dungeons-8pm.html)
 
 ##Suggestions and ToDo list
 We're keeping all our tasks and ideas for enhancements on [the Drains and Dragons trello 'todo' list](https://trello.com/b/fSdf1Dy0/drains-and-dragons). Feel free to add to it :)

@@ -1,5 +1,5 @@
 Template.bookmarks.helpers({
   recipeCount: function() {
-    return pluralize(this.length, 'recipe');
+    return pluralize(this.length, 'badge');
   }
 });

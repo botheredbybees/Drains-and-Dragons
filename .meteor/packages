@@ -6,10 +6,6 @@
 
 # Packages from the release:
 meteor-platform
-insecure
-bevanhunt:leaflet
-webapp
-browser-policy
 less
 email
 http
@@ -27,3 +23,5 @@ percolate:velocityjs
 percolate:wireframing
 mdg:camera
 mdg:geolocation
+bevanhunt:leaflet
+herrhelms:meteor-leaflet-locatecontrol

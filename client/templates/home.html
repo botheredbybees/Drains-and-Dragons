@@ -1,0 +1,37 @@
+<template name="home">
+  <div class="page home">
+
+    {{>nav title='Drains and Dragons' black=true}}
+
+    <div class="content-scrollable">
+      <div class="home">
+        <h1 class="title-home">
+          <img src="img/app/logo-local.svg" alt="Drains and Dungeons"/>
+        </h1>
+        <span class="hours">Elevating public awareness of civil infrastructure one drain at a time</span>
+        <span class="arrow"></span>
+      </div>
+
+
+
+      <div class="list-activities">
+        {{> mapdisplay}}
+      </div>
+
+    </div>
+
+  </div>
+</template>
+
+<template name="mapdisplay" >
+    <div id="container">
+      <h1 class="title">Drains and Dragons</h1>
+      <p>A game of Trash and Time</p>
+      <div id="map" class="map">
+      </div>
+      <div class="notice">
+        Double-click on map creates a marker<br>
+        Click on a marker to delete it
+      </div>
+    </div>
+</template>

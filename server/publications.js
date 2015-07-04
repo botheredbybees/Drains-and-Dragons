@@ -1,7 +1,7 @@
 var distanceToItem = function(LatLongSelf, LatLongItem){
   var delE = LatLongSelf[0] - LatLongItem[0];
   var delN = LatLongSelf[1] - LatLongItem[1];
-  return (math.sqrt((delE * delE) + (delN * delN));
+  return (math.sqrt((delE * delE) + (delN * delN)))
 };
 
 Meteor.publish('bookmarkCounts', function() {

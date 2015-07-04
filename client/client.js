@@ -1,12 +1,7 @@
 // on startup run resizing event
 Meteor.startup(function() {
-	Geolocation.currentLocation();
   $(window).resize(function() {
-    $('#map').css('height', window.innerHeight - 82 - 45);
   });
-  $(window).resize(); // trigger resize event
-  $("#map").height($(window).height()).width($(window).width());
-
 });
 
 // create marker collection
@@ -14,12 +9,14 @@ var Markers = new Meteor.Collection('markers');
 
 Meteor.subscribe('markers');
 
-Template.map.rendered = function() {
+Template.mapdisplay.rendered = function() {
+    $('#map').css('height', window.innerHeight - 82 - 45);
+
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
-  var map = L.map('map', {
+ var map = L.map('map', {
     doubleClickZoom: false
-  });
+  }).setView([-42.8806, 147.3250], 13);
 
  // map.locate({setView: true, maxZoom: 16});
 

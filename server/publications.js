@@ -1,6 +1,3 @@
-MLibaries = ['art','art-hobart','bbqs', 'bins','pits','playgrounds','toilets','trees'];
-
-
   Meteor.publish('art', function(){
     return art.find();
   })

@@ -1,0 +1,41 @@
+<template name="art">
+
+  <div class="page art">
+    {{>nav title="Glenorchy Artworks"}}
+    <!--div class="image-artwork" style="background-image: url('{{artworkImage recipe=this size='full'}}')"></div-->
+
+    
+
+    <div class="content-scrollable">
+    <div class="bg-image planar">
+      </div>
+    
+      <div class="description-about">
+      <h1>Planar Powers</h1>
+        <p class="description-recipe">Beyond the mountains at the edge of the world or below the deepest seas, the sages and wise old priests say that there are gateways to the lands beyond. They speak of elysian fields; rivers of sweet wine and maidens dancing in fields of gold. They tell tales of the paradise of heavens to be found past the Planar Door. Tales tell, too, of the Thousandfold Hell. Of the swirling Elemental Vortex and the devils that wait for the stars to align so they can enter Tasmania and wreak their bloody havoc. You must be curious to know if these tales are true? What will you see when the passage to the beyond is opened?</p>
+      </div>
+      {{planarmonsters}}
+      <div class="list-activities {{#unless ready}}loading{{/unless}}">
+        {{#if ready}}
+          {{#each planarmonsters}} 
+            <!--{{> monster}}-->
+            <div class="wrapper-message">
+              <div class="title-message">monsters be here</div>
+              <div class="subtitle-message">a list of monsters</div>
+            </div>
+          {{else}}
+            <div class="wrapper-message">
+              <div class="title-message">monsters be here</div>
+              <div class="subtitle-message">a list of monsters</div>
+            </div>
+          {{/each}}
+        {{else}}
+          <div class="wrapper-message">
+            <div class="icon-sync"></div>
+            <div class="title-message">Loading</div>
+          </div>
+        {{/if}}
+      </div>
+    </div>    
+  </div>
+</template>

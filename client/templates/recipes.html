@@ -1,0 +1,34 @@
+<template name="recipes">
+  <div class="page about">
+    {{> nav title='Quests' black=true}}
+
+    <div class="content-scrollable">
+      <div class="bg-image about">
+      </div>
+      <div class="description-about">
+        <!--{{#each this}}
+          {{#if highlighted}}
+            {{> recipeItem recipe=this size='large'}}
+          {{else}}
+            {{> recipeItem recipe=this size='small'}}
+          {{/if}}
+        {{/each}}-->
+        <h2>Glenorchy</h2>
+        <ul class="questlist">
+        <li><a href="{{pathFor 'art'}}">Artworks</a> </li>
+          <li>BBQs</li>
+          <li>Stormwater Pits</li>
+        </ul>
+        <h2>Hobart</h2>
+        <ul class="questlist">
+          <li>Drainage Nodes</li>
+          <li>Litter Bins</li>
+          <li>Parks</li>
+          <li>Significant Trees</li>
+          <li>Toilets</li>
+          <li>Urban Art</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,16 +1,15 @@
-var distanceToItem = function(LatLongSelf, LatLongItem){
-  var delE = LatLongSelf[0] - LatLongItem[0];
-  var delN = LatLongSelf[1] - LatLongItem[1];
-  return (math.sqrt((delE * delE) + (delN * delN)))
-};
-
 Meteor.publish('bookmarkCounts', function() {
   return BookmarkCounts.find();
 });
 
-Meteor.publish('monsters', function() {
-  return Monsters.find();
+Meteor.publish('allmonsters', function() {
+  return Monsters.find({});
 });
+
+// Meteor.publish('monster', function(monstername) {
+//   check(monstername, String);
+//   return Monsters.find({name: monstername});
+// });
 
 Meteor.publish('news', function() {
   return News.find({}, {sort: {date: -1}, limit: 1});

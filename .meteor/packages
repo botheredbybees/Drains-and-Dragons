@@ -6,10 +6,6 @@
 
 # Packages from the release:
 meteor-platform
-insecure
-bevanhunt:leaflet
-webapp
-browser-policy
 less
 email
 http

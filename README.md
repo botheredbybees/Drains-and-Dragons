@@ -1,4 +1,4 @@
-# Drains-and-dungeons
+# Drains and Dragons
 This is a team repository for govHack 2015
 
 A mobile augmented reality game using local government datasets to create a simple 'Dungeons and Dragons' hack and slash fest.

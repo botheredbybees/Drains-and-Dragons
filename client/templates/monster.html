@@ -1,7 +1,7 @@
-<template name="art">
+<template name="monster">
 
   <div class="page art">
-    {{>nav title="Glenorchy Artworks"}}
+    {{>nav title=":name"}}
     <!--div class="image-artwork" style="background-image: url('{{artworkImage recipe=this size='full'}}')"></div-->
 
     
@@ -13,9 +13,7 @@
         <h1>Home of the Planar Powers</h1>
         <p class="description-recipe">Beyond the mountains at the edge of the world or below the deepest seas, the sages and wise old priests say that there are gateways to the lands beyond. They speak of elysian fields; rivers of sweet wine and maidens dancing in fields of gold. They tell tales of the paradise of heavens to be found past the Planar Door. Tales tell, too, of the Thousandfold Hell. Of the swirling Elemental Vortex and the devils that wait for the stars to align so they can enter Tasmania and wreak their bloody havoc. You must be curious to know if these tales are true? What will you see when the passage to the beyond is opened?</p>
         <p>Art lovers, such as the:</p>
-        {{#each planarmonsters}}
-          <a href="{{pathFor 'monster'}}/:{{name}}">{{name}}</a><br>
-        {{/each}}
+        
       </div>
       
       <!-- <div class="list-activities {{#unless ready}}loading{{/unless}}">

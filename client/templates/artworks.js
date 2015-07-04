@@ -4,7 +4,7 @@ Router.route('/art', function () {
 
 Template.art.helpers({
   planarmonsters: function() {
-  	console.log('looking for monsters');
+  	//console.log('looking for monsters');
     return Monsters.planar();
   }
 });

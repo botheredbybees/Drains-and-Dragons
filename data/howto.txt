@@ -47,3 +47,64 @@ mongodb://client-c13e8730:ce1ba416-82e7-3ac5-59b4-e3756c96415a@production-db-c2.
 
 copy out the bits and make a command like:
 mongorestore -u client-c13e8730 -p ce1ba416-82e7-3ac5-59b4-e3756c96415a -h production-db-c2.meteor.io:27017 -db drains-and-dungeons_meteor_com data/mongodb-backup/meteor/
+
+######################################################################
+
+getting the whole 'display from database' thing happening... by example
+
+let's say you want to show all the 'planar powers' monsters (monsters in the monster table that have their setting field set to "Planar Powers")
+
+1) in server/publications.js make a publication:
+
+Meteor.publish('allmonsters', function() {
+  return Monsters.find({});
+});
+
+2) in lib/router.js make a subscription on the client side to the new publication:
+
+// Global subscriptions
+if (Meteor.isClient) {
+  Meteor.subscribe('allmonsters');
+}
+
+3) in the /lib directory create a new file for your table (in this case: monsters.js) and include code to make a collection using the table name, and a function to return a bunch of records from it:
+
+Monsters = new Mongo.Collection('monsters');
+
+Monsters.planar = function() {
+  return Monsters.find({setting:"Planar Powers"}).fetch();
+};
+
+4) Create a template to show your shiny new data in. Let's say: client/templates/planarmonsters.html - put this code in it to show the name field from each record:
+
+<template name="mymonsters">
+  {{#each planarmonsters}}
+    {{name}}<br>
+  {{/each}}
+</template>
+
+5) create a companion javascript file for your template. Say: client/templates/planarmonsters.js with something like this in it:
+
+Router.route('/showmonsters', function () {
+  this.render('mymonsters');
+});
+
+Template.mymonsters.helpers({
+  planarmonsters: function() {
+    return Monsters.planar();
+  }
+});
+
+6) Bonus information:
+The Router.route stuff is in there so you can create and link to new pages. For it to work you need to create a route in /lib/router.js ...
+
+Router.map(function() {
+  this.route('showmonsters');
+});
+
+7) and create a link on some other page like this:
+
+<a href="{{pathFor 'showmonsters'}}">Show me them Planar Powers monsters</a>
+
+
+8) go have a bex and a good lie down

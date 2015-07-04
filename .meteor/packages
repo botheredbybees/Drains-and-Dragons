@@ -6,12 +6,10 @@
 
 # Packages from the release:
 meteor-platform
-<<<<<<< HEAD
 insecure
 bevanhunt:leaflet
 webapp
 browser-policy
-=======
 less
 email
 http
@@ -29,4 +27,3 @@ percolate:velocityjs
 percolate:wireframing
 mdg:camera
 mdg:geolocation
->>>>>>> master

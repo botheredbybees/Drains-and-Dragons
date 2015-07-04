@@ -17,7 +17,7 @@
       <h2 class="list-title">Map</h2>
       <div class="list-subtitle">See what the community is cooking</div>
       <div class="list-activities">
-        {{> map}}
+        {{> mapdisplay}}
       </div>
 
     </div>
@@ -25,12 +25,12 @@
   </div>
 </template>
 
-
-<template name="map">
+<template name="mapdisplay" >
     <div id="container">
       <h1 class="title">Drains and Dragons</h1>
       <p>A game of Trash and Time</p>
-      <div id="map" class="map"></div>
+      <div id="map" class="map">
+      </div>
       <div class="notice">
         Double-click on map creates a marker<br>
         Click on a marker to delete it

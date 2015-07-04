@@ -1,3 +1,30 @@
+MLibaries = ['art','art-hobart','bbqs', 'bins','pits','playgrounds','toilets','trees'];
+
+
+  Meteor.publish('art', function(){
+    return art.find();
+  })
+  Meteor.publish('art-hobart', function(){
+    return art-hobart.find();
+  })
+  Meteor.publish('bbqs', function(){
+    return bbqs.find();
+  })
+  Meteor.publish('bins', function(){
+    return bins.find();
+  })
+  Meteor.publish('pits', function(){
+    return pits.find();
+  })
+  Meteor.publish('playgrounds', function(){
+    return playgrounds.find();
+  })
+  Meteor.publish('toilets', function(){
+    return toilets.find();
+  })
+  Meteor.publish('trees', function(){
+    return trees.find();
+  })
 Meteor.publish('bookmarkCounts', function() {
   return BookmarkCounts.find();
 });
@@ -21,14 +48,6 @@ Meteor.publish('latestActivity', function () {
 
 Meteor.publish('feed', function() {
   return Activities.find({}, {sort: {date: -1}, limit: 10});
-});
-
-Meteor.publish('recipe', function(name) {
-  check(name, String);
-  return [
-    BookmarkCounts.find({recipeName: name}),
-    Activities.find({recipeName: name})
-  ];
 });
 
 // autopublish the user's bookmarks and admin status

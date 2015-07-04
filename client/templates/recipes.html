@@ -1,9 +1,11 @@
 <template name="recipes">
-  <div class="page recipes">
+  <div class="page about">
     {{> nav title='Quests' black=true}}
 
     <div class="content-scrollable">
-      <div class="list-quests">
+      <div class="bg-image about">
+      </div>
+      <div class="description-about">
         <!--{{#each this}}
           {{#if highlighted}}
             {{> recipeItem recipe=this size='large'}}
@@ -13,7 +15,7 @@
         {{/each}}-->
         <h2>Glenorchy</h2>
         <ul class="questlist">
-        <li><a href="{{pathFor 'artworks'}}" class="{{activePage 'artworks'}}">Artworks</a></li>
+        <li><a href="{{pathFor 'art'}}">Artworks</a> </li>
           <li>BBQs</li>
           <li>Stormwater Pits</li>
         </ul>
@@ -28,6 +30,5 @@
         </ul>
       </div>
     </div>
-
   </div>
 </template>

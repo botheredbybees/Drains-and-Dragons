@@ -2,14 +2,14 @@ Meteor.publish('bookmarkCounts', function() {
   return BookmarkCounts.find();
 });
 
-Meteor.publish('monsters', function(realm) {
-  return Monsters.find({setting: realm});
+Meteor.publish('allmonsters', function() {
+  return Monsters.find({});
 });
 
-Meteor.publish('monster', function(monstername) {
-  check(monstername, String);
-  return Monsters.find({name: monstername});
-});
+// Meteor.publish('monster', function(monstername) {
+//   check(monstername, String);
+//   return Monsters.find({name: monstername});
+// });
 
 Meteor.publish('news', function() {
   return News.find({}, {sort: {date: -1}, limit: 1});

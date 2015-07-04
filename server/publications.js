@@ -2,8 +2,8 @@ Meteor.publish('bookmarkCounts', function() {
   return BookmarkCounts.find();
 });
 
-Meteor.publish('monsters', function() {
-  return Monsters.find();
+Meteor.publish('monsters', function(realm) {
+  return Monsters.find({setting: realm});
 });
 
 Meteor.publish('monster', function(monstername) {

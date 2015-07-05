@@ -37,6 +37,8 @@ Template.bbqs.events({
       Session.set("selectedMonster", this.name);
       Session.set("fighting", false);
       Session.set("monsterSetting", "bbqs");
+      Session.set("fighting", true);    //////////////////////////////// in here for testing
+      Session.set("playerhealth",100);
    }
 });
 
@@ -57,6 +59,8 @@ Template.pits.events({
       Session.set("selectedMonster", this.name);
       Session.set("fighting", false);
       Session.set("monsterSetting", "pits");
+      Session.set("fighting", true);    //////////////////////////////// in here for testing
+      Session.set("playerhealth",100);
    }
 });
 
@@ -77,6 +81,8 @@ Template.nodes.events({
       Session.set("selectedMonster", this.name);
       Session.set("fighting", false);
       Session.set("monsterSetting", "nodes");
+      Session.set("fighting", true);    //////////////////////////////// in here for testing
+      Session.set("playerhealth",100);
    }
 });
 
@@ -97,6 +103,8 @@ Template.bins.events({
       Session.set("selectedMonster", this.name);
       Session.set("fighting", false);
       Session.set("monsterSetting", "bins");
+      Session.set("fighting", true);    //////////////////////////////// in here for testing
+      Session.set("playerhealth",100);
    }
 });
 
@@ -117,6 +125,8 @@ Template.parks.events({
       Session.set("selectedMonster", this.name);
       Session.set("fighting", false);
       Session.set("monsterSetting", "parks");
+      Session.set("fighting", true);    //////////////////////////////// in here for testing
+      Session.set("playerhealth",100);
    }
 });
 
@@ -137,6 +147,8 @@ Template.playgrounds.events({
       Session.set("selectedMonster", this.name);
       Session.set("fighting", false);
       Session.set("monsterSetting", "playgrounds");
+      Session.set("fighting", true);    //////////////////////////////// in here for testing
+      Session.set("playerhealth",100);
    }
 });
 
@@ -157,6 +169,8 @@ Template.trees.events({
       Session.set("selectedMonster", this.name);
       Session.set("fighting", false);
       Session.set("monsterSetting", "trees");
+      Session.set("fighting", true);    //////////////////////////////// in here for testing
+      Session.set("playerhealth",100);
    }
 });
 
@@ -177,6 +191,8 @@ Template.toilets.events({
       Session.set("selectedMonster", this.name);
       Session.set("fighting", false);
       Session.set("monsterSetting", "toilets");
+      Session.set("fighting", true);    //////////////////////////////// in here for testing
+      Session.set("playerhealth",100);
    }
 });
 
@@ -197,5 +213,7 @@ Template.urbanart.events({
       Session.set("selectedMonster", this.name);
       Session.set("fighting", false);
       Session.set("monsterSetting", "planar");
+      Session.set("fighting", true);    //////////////////////////////// in here for testing
+      Session.set("playerhealth",100);
    }
 });

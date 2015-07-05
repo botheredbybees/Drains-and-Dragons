@@ -114,8 +114,8 @@
           <h2>{{getmymonster.name}} Health</h2>
           <div class="monsterhealth" style="width: {{ourmonstersHealth}}%">&nbsp;</div>
           <div class="bg-image {{session "monsterSetting"}}">&nbsp;</div>
-          <h2>Your Health</h2>
           <div class="playerhealth" style="width: {{ourHealth}}%">&nbsp;</div>
+          <h2>Your Health</h2>
         </p>
         <p><br></p>
       {{#if fighting}}
@@ -152,12 +152,7 @@
   <div class="page art">
     {{>nav title="You Win!"}}
     <!--div class="image-artwork" style="background-image: url('{{artworkImage recipe=this size='full'}}')"></div-->
-
-    
-    {{> sAlert}}
-
-    <div class="content-scrollable">
-      
+    <div class="content-scrollable">      
       
       <div class="description-about">
 
@@ -169,14 +164,67 @@
           
           <h2>{{getmymonster.name}} Died</h2>
           <div>&nbsp;</div>
-          <div >
-      <img src='/img/monsters/640x480/{{session "monsterfile"}}_dead.png' alt="{{session "monsterfile"}} is dead"></div>
-          <h2>Your Health</h2>
+          
+      <div class="bg-image" style="background-image: url('/img/monsters/640x480/{{session "monsterfile"}}_dead.png')"></div>
           <div class="playerhealth" style="width: {{ourHealth}}%">&nbsp;</div>
+          <h2>Your Health</h2>
         </p>
         <p><br></p>
       {{#if fighting}}
-      <p class="fightfleefindout"> <a href="#" class="btn flee">Home</a> <a href="{{pathFor 'monster_findout'}}" class="btn findout">find out more about your vanquished foe</a>  </p>
+      <p class="fightfleefindout"> <a href="#" class="btn flee">map</a> <a href="{{pathFor 'monster_findout'}}" class="btn findout">feel smug</a>  </p>
+      {{/if}}
+      </div>
+      <!-- <div class="list-activities {{#unless ready}}loading{{/unless}}">
+        {{#if ready}}
+          {{#each planarmonsters}}  -->
+            <!--{{> monster}}-->
+            <!-- <div class="wrapper-message">
+              <div class="title-message">monsters be here</div>
+              <div class="subtitle-message">a list of monsters</div>
+            </div>
+          {{else}}
+            <div class="wrapper-message">
+              <div class="title-message">monsters be here</div>
+              <div class="subtitle-message">a list of monsters</div>
+            </div>
+          {{/each}}
+        {{else}}
+          <div class="wrapper-message">
+            <div class="icon-sync"></div>
+            <div class="title-message">Loading</div>
+          </div>
+        {{/if}} 
+      </div> --> 
+    </div>   
+  </div>
+</template>
+
+
+<template name="you_died">
+
+  <div class="page art">
+    {{>nav title="..."}}
+    <!--div class="image-artwork" style="background-image: url('{{artworkImage recipe=this size='full'}}')"></div-->
+    <div class="content-scrollable">      
+      
+      <div class="description-about">
+
+          
+        <p><br><br><br></p>
+        <p><br><br><br></p>
+        
+        <p class="description-recipe">
+          
+          <h2>You Died :-(</h2>
+          <div>&nbsp;</div>
+          
+      <div class="bg-image" style="background-image: url('/img/monsters/640x480/RIP.png')"></div>
+          <div class="playerhealth" style="width: 0%">&nbsp;</div>
+          <h2>Your Health</h2>
+        </p>
+        <p><br></p>
+      {{#if fighting}}
+      <p class="fightfleefindout"> <a href="#" class="btn flee">slink off home</a> <a href="{{pathFor 'monster_findout'}}" class="btn findout">cower</a>  </p>
       {{/if}}
       </div>
       <!-- <div class="list-activities {{#unless ready}}loading{{/unless}}">

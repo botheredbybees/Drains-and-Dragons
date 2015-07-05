@@ -16,6 +16,7 @@ Template.art.events({
       Session.set("fighting", false);
       Session.set("monsterSetting", "planar");
       Session.set("fighting", true);    //////////////////////////////// in here for testing
+      Session.set("playerhealth",100);
    }
 });
 

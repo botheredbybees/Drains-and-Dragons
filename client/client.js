@@ -3,6 +3,16 @@ Meteor.startup(function() {
 
   $(window).resize(function() {
   });
+
+   sAlert.config({
+        effect: 'jelly',
+        position: 'top-right',
+        timeout: 2500,
+        html: false,
+        onRouteClose: true,
+        stack: true,
+        offset: 0
+    });
 });
 
 // create marker collection

@@ -15,6 +15,9 @@
     <div class="description-welcome">
     <p>This app includes a simple administrative backend that you can use to set welcome text on the app's home screen. Visit <a href="{{pathFor 'admin'}}">/admin</a> to log into the backend. The first authenticated user is allowed access.</p>
     </div>
+    <div class="test">
+      {{> pitTemplate}}
+    </div>
   </div>
 
   <div id="container" class="{{menuOpen}} {{overlayOpen}}">
@@ -75,4 +78,10 @@
     </div>
 
   </div>
+</template>
+<template name = "pitTemplate">
+  hello
+  {{#each pitpoints}}
+  {{geometry.coordinates}}
+  {{/each}}
 </template>

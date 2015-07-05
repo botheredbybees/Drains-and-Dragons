@@ -7,8 +7,8 @@
 //   return art.find({'geometry.coordinates[0]':{ $near :
 //     { $geometry :
 //       { type : "Point" ,
-//         coordinates: [147.276568, -42.831024] } , $maxDistance : 100}      
-//     } 
+//         coordinates: [147.276568, -42.831024] } , $maxDistance : 100}
+//     }
 //   });
 
 // });
@@ -22,20 +22,23 @@
   Meteor.publish('bins', function(){
     return bins.find();
   });
-  
 
-  // Pits = new Mongo.Collection('pits');
+
+  // pits = new Mongo.Collection('pits');
   // Meteor.publish('allpits', function(){
-  //   return Pits.find();
+  //   return pits.find();
   // });
   Meteor.publish('pitlocations', function() {
-
-  return Pits.find({ geometry :
+//var lat = position.coords.lattitude || -42.831024;
+//var long = position.coords.lattitude || 147.276568;
+var lat = -42.831024;
+var long = 147.276568;
+  return pits.find({ geometry :
        { $near :
           {
             $geometry : {
                type : "Point" ,
-               coordinates : [147.276568, -42.831024] },
+               coordinates : [long, lat] },
             $maxDistance : 10
           }
        }
@@ -89,11 +92,11 @@ Meteor.publish(null, function() {
 });
 
 // make sure we've got some geospacial indexes to work with
-Meteor.startup(function () {  
+Meteor.startup(function () {
   art._ensureIndex({ "geometry": "2dsphere" });
   bbqs._ensureIndex({ "geometry": "2dsphere" });
   bins._ensureIndex({ "geometry": "2dsphere" });
-  Pits._ensureIndex({ "geometry": "2dsphere" });
+  pits._ensureIndex({ "geometry": "2dsphere" });
   playgrounds._ensureIndex({ "geometry": "2dsphere" });
   // toilets._ensureIndex({ "geometry": "2dsphere" });
   trees._ensureIndex({ "geometry": "2dsphere" });

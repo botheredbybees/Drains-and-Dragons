@@ -13,7 +13,9 @@ Template.art.events({
    'click .monstername': function(e) {
     	//console.log('setting name = '+this.name);   
       Session.set("selectedMonster", this.name);
+      Session.set("fighting", false);
       Session.set("monsterSetting", "planar");
+      Session.set("fighting", true);    //////////////////////////////// in here for testing
    }
 });
 
@@ -32,6 +34,7 @@ Template.bbqs.events({
    'click .monstername': function(e) {
     	//console.log('setting name = '+this.name);   
       Session.set("selectedMonster", this.name);
+      Session.set("fighting", false);
       Session.set("monsterSetting", "bbqs");
    }
 });
@@ -51,6 +54,7 @@ Template.pits.events({
    'click .monstername': function(e) {
     	//console.log('setting name = '+this.name);   
       Session.set("selectedMonster", this.name);
+      Session.set("fighting", false);
       Session.set("monsterSetting", "pits");
    }
 });
@@ -70,6 +74,7 @@ Template.nodes.events({
    'click .monstername': function(e) {
     	//console.log('setting name = '+this.name);   
       Session.set("selectedMonster", this.name);
+      Session.set("fighting", false);
       Session.set("monsterSetting", "nodes");
    }
 });
@@ -89,6 +94,7 @@ Template.bins.events({
    'click .monstername': function(e) {
     	//console.log('setting name = '+this.name);   
       Session.set("selectedMonster", this.name);
+      Session.set("fighting", false);
       Session.set("monsterSetting", "bins");
    }
 });
@@ -108,6 +114,7 @@ Template.parks.events({
    'click .monstername': function(e) {
     	//console.log('setting name = '+this.name);   
       Session.set("selectedMonster", this.name);
+      Session.set("fighting", false);
       Session.set("monsterSetting", "parks");
    }
 });
@@ -127,6 +134,7 @@ Template.playgrounds.events({
    'click .monstername': function(e) {
     	//console.log('setting name = '+this.name);   
       Session.set("selectedMonster", this.name);
+      Session.set("fighting", false);
       Session.set("monsterSetting", "playgrounds");
    }
 });
@@ -146,6 +154,7 @@ Template.trees.events({
    'click .monstername': function(e) {
     	//console.log('setting name = '+this.name);   
       Session.set("selectedMonster", this.name);
+      Session.set("fighting", false);
       Session.set("monsterSetting", "trees");
    }
 });
@@ -165,6 +174,7 @@ Template.toilets.events({
    'click .monstername': function(e) {
     	//console.log('setting name = '+this.name);   
       Session.set("selectedMonster", this.name);
+      Session.set("fighting", false);
       Session.set("monsterSetting", "toilets");
    }
 });
@@ -184,6 +194,7 @@ Template.urbanart.events({
    'click .monstername': function(e) {
     	//console.log('setting name = '+this.name);   
       Session.set("selectedMonster", this.name);
+      Session.set("fighting", false);
       Session.set("monsterSetting", "planar");
    }
 });

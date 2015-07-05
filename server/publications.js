@@ -1,27 +1,57 @@
   Meteor.publish('art', function(){
     return art.find();
-  })
-  Meteor.publish('art-hobart', function(){
-    return art-hobart.find();
-  })
+  });
+
+// Meteor.publish('artlocations', function() {
+
+//   return art.find({'geometry.coordinates[0]':{ $near :
+//     { $geometry :
+//       { type : "Point" ,
+//         coordinates: [147.276568, -42.831024] } , $maxDistance : 100}      
+//     } 
+//   });
+
+// });
+
+  Meteor.publish('artHobart', function(){
+    return artHobart.find();
+  });
   Meteor.publish('bbqs', function(){
     return bbqs.find();
-  })
+  });
   Meteor.publish('bins', function(){
     return bins.find();
-  })
-  Meteor.publish('pits', function(){
-    return pits.find();
-  })
+  });
+  
+
+  // Pits = new Mongo.Collection('pits');
+  // Meteor.publish('allpits', function(){
+  //   return Pits.find();
+  // });
+  Meteor.publish('pitlocations', function() {
+
+  return Pits.find({ geometry :
+       { $near :
+          {
+            $geometry : {
+               type : "Point" ,
+               coordinates : [147.276568, -42.831024] },
+            $maxDistance : 10
+          }
+       }
+    });
+
+});
+
   Meteor.publish('playgrounds', function(){
     return playgrounds.find();
-  })
+  });
   Meteor.publish('toilets', function(){
     return toilets.find();
-  })
+  });
   Meteor.publish('trees', function(){
     return trees.find();
-  })
+  });
 Meteor.publish('bookmarkCounts', function() {
   return BookmarkCounts.find();
 });
@@ -56,4 +86,16 @@ Meteor.publish(null, function() {
       'services.twitter.profile_image_url_https': 1
     }
   });
-})
+});
+
+// make sure we've got some geospacial indexes to work with
+Meteor.startup(function () {  
+  art._ensureIndex({ "geometry": "2dsphere" });
+  bbqs._ensureIndex({ "geometry": "2dsphere" });
+  bins._ensureIndex({ "geometry": "2dsphere" });
+  Pits._ensureIndex({ "geometry": "2dsphere" });
+  playgrounds._ensureIndex({ "geometry": "2dsphere" });
+  // toilets._ensureIndex({ "geometry": "2dsphere" });
+  trees._ensureIndex({ "geometry": "2dsphere" });
+  artHobart._ensureIndex({ "geometry": "2dsphere" });
+});

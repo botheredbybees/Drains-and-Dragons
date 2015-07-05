@@ -13,8 +13,99 @@
         <h1>{{getmymonster.name}}</h1>
         <p class="description-recipe">{{getmymonster.description}}</p>
         
+      {{#if fighting}}
+      <br>
+      <p class="fightfleefindout"> <a href="#" class="btn flee">flee</a> <a href="{{pathFor 'monster_findout'}}" class="btn findout">find out more</a> <a href="{{pathFor 'monster_fight'}}" class="btn fight">fight</a> </p>
+      {{/if}}
       </div>
+      <!-- <div class="list-activities {{#unless ready}}loading{{/unless}}">
+        {{#if ready}}
+          {{#each planarmonsters}}  -->
+            <!--{{> monster}}-->
+            <!-- <div class="wrapper-message">
+              <div class="title-message">monsters be here</div>
+              <div class="subtitle-message">a list of monsters</div>
+            </div>
+          {{else}}
+            <div class="wrapper-message">
+              <div class="title-message">monsters be here</div>
+              <div class="subtitle-message">a list of monsters</div>
+            </div>
+          {{/each}}
+        {{else}}
+          <div class="wrapper-message">
+            <div class="icon-sync"></div>
+            <div class="title-message">Loading</div>
+          </div>
+        {{/if}} 
+      </div> --> 
+    </div>   
+  </div>
+</template>
+
+<template name="monster_findout">
+
+  <div class="page art">
+    {{>nav title="More Info"}}
+    <!--div class="image-artwork" style="background-image: url('{{artworkImage recipe=this size='full'}}')"></div-->
+
+    
+
+    <div class="content-scrollable">
+      <div class="bg-image {{session "monsterSetting"}}"></div>
       
+      <div class="description-about">
+        <h1>{{getmymonster.name}}</h1>
+        <p class="description-recipe">{{getmymonster.description}}</p>
+        
+      {{#if fighting}}
+      <p class="fightfleefindout"> <a href="#" class="btn flee">flee</a> <a href="{{pathFor 'monster_findout'}}" class="btn findout">find out more</a> <a href="{{pathFor 'monster_fight'}}" class="btn fight">fight</a> </p>
+      {{/if}}
+      </div>
+      <!-- <div class="list-activities {{#unless ready}}loading{{/unless}}">
+        {{#if ready}}
+          {{#each planarmonsters}}  -->
+            <!--{{> monster}}-->
+            <!-- <div class="wrapper-message">
+              <div class="title-message">monsters be here</div>
+              <div class="subtitle-message">a list of monsters</div>
+            </div>
+          {{else}}
+            <div class="wrapper-message">
+              <div class="title-message">monsters be here</div>
+              <div class="subtitle-message">a list of monsters</div>
+            </div>
+          {{/each}}
+        {{else}}
+          <div class="wrapper-message">
+            <div class="icon-sync"></div>
+            <div class="title-message">Loading</div>
+          </div>
+        {{/if}} 
+      </div> --> 
+    </div>   
+  </div>
+</template>
+
+<template name="monster_fight">
+
+  <div class="page art">
+    {{>nav title="FIGHT!"}}
+    <!--div class="image-artwork" style="background-image: url('{{artworkImage recipe=this size='full'}}')"></div-->
+
+    
+
+    <div class="content-scrollable">
+      <div class="bg-image {{session "monsterSetting"}}"></div>
+      
+      <div class="description-about">
+        <h1>{{getmymonster.name}}</h1>
+        <p class="description-recipe">{{getmymonster.description}}</p>
+        
+      {{#if fighting}}
+      <p class="fightfleefindout"> <a href="#" class="btn flee">flee</a> <a href="{{pathFor 'monster_findout'}}" class="btn findout">find out more</a> <a href="{{pathFor 'monster_fight'}}" class="btn fight">fight</a> </p>
+      {{/if}}
+      </div>
       <!-- <div class="list-activities {{#unless ready}}loading{{/unless}}">
         {{#if ready}}
           {{#each planarmonsters}}  -->

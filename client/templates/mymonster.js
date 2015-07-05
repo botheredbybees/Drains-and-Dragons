@@ -236,7 +236,7 @@ Template.monster_died.events({
     'click .fight': function(){
         //console.log("You clicked fight");
         Session.set("monsterhealth",100);
-        console.log(Session.get("monsterhealth"));
+        //console.log(Session.get("monsterhealth"));
     },
     'click .flee': function(){
         Router.go('/');

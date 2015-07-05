@@ -1,18 +1,35 @@
 <template name="recipes">
-  <div class="page recipes">
-    {{> nav title='Recipes' black=true}}
+  <div class="page about">
+    {{> nav title='Quests' black=true}}
 
     <div class="content-scrollable">
-      <div class="list-recipes">
-        {{#each this}}
+      <div class="bg-image about">
+      </div>
+      <div class="description-about">
+        <!--{{#each this}}
           {{#if highlighted}}
             {{> recipeItem recipe=this size='large'}}
           {{else}}
             {{> recipeItem recipe=this size='small'}}
           {{/if}}
-        {{/each}}
+        {{/each}}-->
+        <h2>Glenorchy</h2>
+        <ul class="questlist">
+        <li><a href="{{pathFor 'art'}}">Artworks</a> </li>
+          <li><a href="{{pathFor 'bbqs'}}">BBQs</a></li>
+          <li><a href="{{pathFor 'pits'}}">Stormwater pits</a></li>
+        </ul>
+        <h2>Hobart</h2>
+        <ul class="questlist">
+          <li><a href="{{pathFor 'nodes'}}">Drainage Nodes</a></li>
+          <li><a href="{{pathFor 'bins'}}">Litter Bins</a></li>
+          <li><a href="{{pathFor 'parks'}}">Parks</a></li>
+          <li><a href="{{pathFor 'playgrounds'}}">Playgrounds</a></li>
+          <li><a href="{{pathFor 'trees'}}">Significant Trees</a></li>
+          <li><a href="{{pathFor 'toilets'}}">Toilets</a></li>
+          <li><a href="{{pathFor 'urbanart'}}">Urban Art</a></li>
+        </ul>
       </div>
     </div>
-
   </div>
 </template>

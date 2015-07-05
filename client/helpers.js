@@ -15,7 +15,7 @@ pluralize = function(n, thing, options) {
     return n + ' ' + plural;
 }
 
-Handlebars.registerHelper('pluralize', pluralize);
+UI.registerHelper('pluralize', pluralize);
 
 var DIMENSIONS = {
   small: '320x350',
@@ -30,9 +30,20 @@ UI.registerHelper('recipeImage', function(options) {
     return '/img/recipes/' + DIMENSIONS[size] + '/' + options.hash.recipe.name + '.jpg';
 });
 
-Handlebars.registerHelper('activePage', function() {
+UI.registerHelper('questImage', function(options) {
+  var size = options.hash.size || 'large';
+
+  if (options.hash.recipe)
+    return '/img/quests/' + DIMENSIONS[size] + '/' + options.hash.quest.name + '.jpg';
+});
+
+UI.registerHelper('activePage', function() {
   // includes Spacebars.kw but that's OK because the route name ain't that.
   var routeNames = arguments;
 
   return _.include(routeNames, Router.current().route.name) && 'active';
+});
+
+UI.registerHelper('session',function(input){
+    return Session.get(input);
 });

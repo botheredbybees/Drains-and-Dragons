@@ -1,19 +1,18 @@
 <template name="bookmarks">
   <div class="page bookmarks">
-    {{> nav title='Your Badges' subtext=recipeCount}}
+    {{> nav title='Your Score'}}
 
     <div class="content-scrollable">
-      <div class="list-recipes">
-        {{#each this}}
-          {{> recipeItem recipe=this size='large'}}
-        {{else}}
-          <div class="wrapper-message">
-            <div class="title-message">No badges earned yet</div>
-            <div class="subtitle-message">Hack some waypoints to gain badges <a href="{{pathFor 'home'}}">Return home</a></div>
-
-          </div>
-        {{/each}}
+      <div class="bg-imagex about">
       </div>
+      <div class="description-about">
+        <p><br></p>
+        <p>Work in progres.. will eventually look a bit like this:<br></p>
+        <p><br></p>
+        <div class="demo inventory" xstyle="background-image: url('img/score/score-screen.png'); height: 17em;"><img src="img/score/score-screen.png" alt="score screen banner" style="width: 100%"></div>
+      
+      </div>
+
     </div>
   </div>
 </template>

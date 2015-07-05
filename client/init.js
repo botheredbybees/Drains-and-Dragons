@@ -1,5 +1,11 @@
+// on startup run resizing event
 Meteor.startup(function() {
-  // Potentially prompts the user to enable location services. We do this early
-  // on in order to have the most accurate location by the time the user shares
-  Geolocation.currentLocation();
+  $(window).resize(function() {
+    $('#map').css('height', window.innerHeight - 82 - 45);
+  });
+  $(window).resize(); // trigger resize event
+  $("#map").height($(window).height()).width($(window).width());
+
 });
+
+

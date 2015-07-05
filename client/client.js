@@ -27,15 +27,15 @@ function showPosition(position) {
 
 
 Template.mapdisplay.rendered = function() {
-  ///navigator.geolocation.watchPosition(showPosition); //get and update the players current location 
+  ///navigator.geolocation.watchPosition(showPosition); //get and update the players current location
 
 
-  
+
 
   $('#map').css('height', window.innerHeight - 82 - 45);
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
- var map = L.map('map', {
+ map = L.map('map', {
     doubleClickZoom: false
   //}).setView([-42.8806, 147.3250], 13);
   }).setView([-42.831024, 147.276568], 13);
@@ -47,11 +47,11 @@ Template.mapdisplay.rendered = function() {
   var lc = L.control.locate({
         position: 'topleft',  // set the location of the control
         drawCircle: true,  // controls whether a circle is drawn that shows the uncertainty about the location
-        follow: false,  // follow the user's location
+        follow: true,  // follow the user's location
         setView: true, // automatically sets the map view to the user's location, enabled if `follow` is true
         keepCurrentZoomLevel: false, // keep the current map zoom level when displaying the user's location. (if `false`, use maxZoom)
         stopFollowingOnDrag: false, // stop following when the map is dragged if `follow` is true (deprecated, see below)
-        remainActive: false, // if true locate control remains active on click even if the user's location is in view.
+        remainActive: true, // if true locate control remains active on click even if the user's location is in view.
         markerClass: L.circleMarker, // L.circleMarker or L.marker
         circleStyle: {},  // change the style of the circle around the user's location
         markerStyle: {},
@@ -78,24 +78,6 @@ Template.mapdisplay.rendered = function() {
 // get nearby markers
 
 
-  longitude=147.276568 + ((Math.random()-2)/100);
-
- //console.log("looking for pit points of interest near longitude "+longitude);
-var pointsofinterest = Pits.find({ geometry :
-       { $near :
-          {
-            $geometry : {
-               type : "Point" ,
-               coordinates : [longitude, -42.831024] },
-            $maxDistance : 10
-          }
-       }
-    }).fetch();
-//console.log(pointsofinterest);
-for(poi in pointsofinterest) {
-  console.log(poi.geometry.coordinates[0]);
-  //var location=L.geoJson(poi.geometry.coordinates).addTo(map);
-}
 
 lc.start();
 

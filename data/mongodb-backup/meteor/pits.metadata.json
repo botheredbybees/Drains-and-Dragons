@@ -1,1 +1,1 @@
-{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "name" : "_id_", "ns" : "meteor.pits" } ] }
+{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "name" : "_id_", "ns" : "meteor.pits" }, { "v" : 1, "key" : { "geometry" : "2dsphere" }, "name" : "geometry_2dsphere", "ns" : "meteor.pits", "safe" : true, "2dsphereIndexVersion" : 2 } ] }

@@ -32,13 +32,13 @@
 //var lat = position.coords.lattitude || -42.831024;
 //var long = position.coords.lattitude || 147.276568;
 var lat = -42.831024;
-var long = 147.276568;
+var longitude = 147.276568;
   return pits.find({ geometry :
        { $near :
           {
             $geometry : {
                type : "Point" ,
-               coordinates : [long, lat] },
+               coordinates : [longitude, lat] },
             $maxDistance : 10
           }
        }
@@ -98,7 +98,7 @@ Meteor.startup(function () {
   bins._ensureIndex({ "geometry": "2dsphere" });
   pits._ensureIndex({ "geometry": "2dsphere" });
   playgrounds._ensureIndex({ "geometry": "2dsphere" });
-  // toilets._ensureIndex({ "geometry": "2dsphere" });
+  // toilets._ensureIndex({ "geometry": "2dsphere" }); // did not import spacial geometry correctly
   trees._ensureIndex({ "geometry": "2dsphere" });
   artHobart._ensureIndex({ "geometry": "2dsphere" });
 });

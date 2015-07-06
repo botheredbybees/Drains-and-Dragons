@@ -6,7 +6,7 @@ Meteor.startup(function() {
 
    sAlert.config({
         effect: 'jelly',
-        position: 'top-right',
+        position: 'top-left',
         timeout: 2500,
         html: false,
         onRouteClose: true,
@@ -35,17 +35,19 @@ Template.mapdisplay.rendered = function() {
   $('#map').css('height', window.innerHeight - 82 - 45);
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
- map = L.map('map', {
-    doubleClickZoom: false
+  map = L.map('map', {
+    doubleClickZoom: false, 
+    zoomControl: false,
+    //attributionControl: false 
   //}).setView([-42.8806, 147.3250], 13);
   }).setView([-42.831024, 147.276568], 13);
-
+  new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
   map.locate({setView: true, maxZoom: 16});
 
   L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
 
   var lc = L.control.locate({
-        position: 'topleft',  // set the location of the control
+        position: 'bottomright',  // set the location of the control
         drawCircle: true,  // controls whether a circle is drawn that shows the uncertainty about the location
         follow: true,  // follow the user's location
         setView: true, // automatically sets the map view to the user's location, enabled if `follow` is true
@@ -74,8 +76,32 @@ Template.mapdisplay.rendered = function() {
         locateOptions: {}  // define location options e.g enableHighAccuracy: true or maxZoom: 10
     }).addTo(map);
 
+    // get markers
 
-// get nearby markers
+    // var pitListCursor = pits.find({});
+    // console.log("find done");
+    // var pitList = pitListCursor.fetch();
+    // pitListCursor.forEach(function(point){
+    //   console.log("point found");
+    //   var lat = parseFloat(point.geometry.coordinates[1]);
+    //   console.log(lat);
+    //   var longitude = parseFloat(point.geometry.coordinates[0]);
+    //   console.log(longitude);
+    //   L.marker(L.latLng(lat,longitude)).addTo(map);
+    // });
+
+    var hobartart = Arthobart.find();
+    console.log(Arthobart.all());
+    console.log("Hobart art points");
+    console.log(hobartart);
+    hobartart.forEach(function(point){
+      var lat = parseFloat(point.geometry.coordinates[1]);
+      console.log(lat);
+      var longitude = parseFloat(point.geometry.coordinates[0]);
+      console.log(longitude);
+      L.marker(L.latLng(lat,longitude)).addTo(map);
+    });
+
 
 
 

@@ -25,7 +25,7 @@ Template.showamonster.events({
     'click .fight': function(){
         //console.log("You clicked fight");
         Session.set("monsterhealth",100);
-        console.log(Session.get("monsterhealth"));
+        //console.log(Session.get("monsterhealth"));
     },
     'click .flee': function(){
         Router.go('/');
@@ -192,7 +192,11 @@ Template.monster_fight.events({
 		    case 3:
 		    case 2:
 		    case 1:
-		        sAlert.info('You smite '+opponent.name+' for '+suffer+' damage');
+		    	if(suffer>8) {
+		        	sAlert.success('You smite '+opponent.name+' for '+suffer+' damage');
+		        } else {
+		        	sAlert.info('You hit '+opponent.name+' and do '+suffer+' damage');
+		        } 
 		        break;
 		    default:
 		        sAlert.success(opponent.name+' missed');
@@ -200,7 +204,7 @@ Template.monster_fight.events({
 
     	
 
-    	console.log(Session.get("monsterhealth"));
+    	//console.log(Session.get("monsterhealth"));
     },
     'click .flee': function(){
         Router.go('/');
@@ -306,7 +310,7 @@ Template.you_died.events({
     'click .fight': function(){
         //console.log("You clicked fight");
         Session.set("monsterhealth",100);
-        console.log(Session.get("monsterhealth"));
+        //console.log(Session.get("monsterhealth"));
     },
     'click .flee': function(){
         Router.go('/');

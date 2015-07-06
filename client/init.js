@@ -5,7 +5,7 @@ Meteor.startup(function() {
   });
   $(window).resize(); // trigger resize event
   $("#map").height($(window).height()).width($(window).width());
-
+  
 });
 
 

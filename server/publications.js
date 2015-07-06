@@ -13,8 +13,8 @@
 
 // });
 
-  Meteor.publish('artHobart', function(){
-    return artHobart.find();
+  Meteor.publish('arthobart', function(){
+    return Arthobart.find();
   });
   Meteor.publish('bbqs', function(){
     return bbqs.find();
@@ -91,14 +91,17 @@ Meteor.publish(null, function() {
   });
 });
 
-// make sure we've got some geospacial indexes to work with
+
 Meteor.startup(function () {
-  art._ensureIndex({ "geometry": "2dsphere" });
-  bbqs._ensureIndex({ "geometry": "2dsphere" });
-  bins._ensureIndex({ "geometry": "2dsphere" });
-  pits._ensureIndex({ "geometry": "2dsphere" });
-  playgrounds._ensureIndex({ "geometry": "2dsphere" });
-  // toilets._ensureIndex({ "geometry": "2dsphere" }); // did not import spacial geometry correctly
-  trees._ensureIndex({ "geometry": "2dsphere" });
-  artHobart._ensureIndex({ "geometry": "2dsphere" });
+  // make sure we've got some geospacial indexes to work with
+  // art._ensureIndex({ "geometry": "2dsphere" });
+  // bbqs._ensureIndex({ "geometry": "2dsphere" });
+  // bins._ensureIndex({ "geometry": "2dsphere" });
+  // pits._ensureIndex({ "geometry": "2dsphere" });
+  // playgrounds._ensureIndex({ "geometry": "2dsphere" });
+  // // toilets._ensureIndex({ "geometry": "2dsphere" }); // did not import spacial geometry correctly
+  // trees._ensureIndex({ "geometry": "2dsphere" });
+  // artHobart._ensureIndex({ "geometry": "2dsphere" });
+
+  // ok, so the whole update the list from our current position thing isn't working
 });

@@ -1,3 +1,17 @@
+
+to deploy:
+meteor deploy drains-and-dungeons.meteor.com
+
+
+#####################################################################
+
+to start on another port:
+meteor --port 3005
+(will start mongodb on the next available port, e.g. 3006)
+
+
+#####################################################################
+
 to back up your local database cd to the application root and run:
  mongodump -h 127.0.0.1:3001 -d meteor -o data/mongodb-backup
 
@@ -47,6 +61,7 @@ mongodb://client-c13e8730:ce1ba416-82e7-3ac5-59b4-e3756c96415a@production-db-c2.
 
 copy out the bits and make a command like:
 mongorestore -u client-c13e8730 -p ce1ba416-82e7-3ac5-59b4-e3756c96415a -h production-db-c2.meteor.io:27017 -db drains-and-dungeons_meteor_com data/mongodb-backup/meteor/
+
 
 ######################################################################
 

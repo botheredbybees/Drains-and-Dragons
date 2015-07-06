@@ -173,17 +173,17 @@ Template.appBody.events({
 
 Template.pitTemplate.helpers({
   pitpoints: function(){
-    var pitListCursor = pits.find();
-    //console.log("find done");
-    var pitList = pitListCursor.fetch();
+    // var pitListCursor = pits.find({});
+    // //console.log("find done");
+    // var pitList = pitListCursor.fetch();
     // pitListCursor.forEach(function(point){
     //   console.log("point found");
     //   var lat = parseFloat(point.geometry.coordinates[1]);
-    //   console.log(lat);
-    //   var long = parseFloat(point.geometry.coordinates[0]);
-    //   console.log(long);
-    //   L.marker(L.latLng(lat,long)).addTo(map);
+    //   //console.log(lat);
+    //   var longitude = parseFloat(point.geometry.coordinates[0]);
+    //   //console.log(longitude);
+    //   L.marker(L.latLng(lat,longitude)).addTo(map);
     // });
-    return pitList;
+    // return pitList;
   }
 })

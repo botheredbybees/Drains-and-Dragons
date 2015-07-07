@@ -33,16 +33,17 @@
 //var long = position.coords.lattitude || 147.276568;
 var lat = -42.831024;
 var longitude = 147.276568;
-  return pits.find({ geometry :
-       { $near :
-          {
-            $geometry : {
-               type : "Point" ,
-               coordinates : [longitude, lat] },
-            $maxDistance : 10
-          }
-       }
-    });
+return;
+  // return pits.find({ geometry :
+  //      { $near :
+  //         {
+  //           $geometry : {
+  //              type : "Point" ,
+  //              coordinates : [longitude, lat] },
+  //           $maxDistance : 10
+  //         }
+  //      }
+  //   });
 
 });
 
@@ -94,14 +95,14 @@ Meteor.publish(null, function() {
 
 Meteor.startup(function () {
   // make sure we've got some geospacial indexes to work with
-  art._ensureIndex({ "geometry": "2dsphere" });
-  bbqs._ensureIndex({ "geometry": "2dsphere" });
-  bins._ensureIndex({ "geometry": "2dsphere" });
-  pits._ensureIndex({ "geometry": "2dsphere" });
-  playgrounds._ensureIndex({ "geometry": "2dsphere" });
-  // toilets._ensureIndex({ "geometry": "2dsphere" }); // did not import spacial geometry correctly
-  trees._ensureIndex({ "geometry": "2dsphere" });
-  Arthobart._ensureIndex({ "geometry": "2dsphere" });
+  // art._ensureIndex({ "geometry": "2dsphere" });
+  // bbqs._ensureIndex({ "geometry": "2dsphere" });
+  // bins._ensureIndex({ "geometry": "2dsphere" });
+  // pits._ensureIndex({ "geometry": "2dsphere" });
+  // playgrounds._ensureIndex({ "geometry": "2dsphere" });
+  // // toilets._ensureIndex({ "geometry": "2dsphere" }); // did not import spacial geometry correctly
+  // trees._ensureIndex({ "geometry": "2dsphere" });
+  // Arthobart._ensureIndex({ "geometry": "2dsphere" });
 
   // ok, so the whole update the list from our current position thing isn't working
 });

@@ -1,10 +1,11 @@
 // on startup run resizing event
 Meteor.startup(function() {
   $(window).resize(function() {
-    $('#map').css('height', window.innerHeight - 82 - 45);
+    $('#map').css('height', $('#container').height());
+    $('#tagline').hide;
   });
   $(window).resize(); // trigger resize event
-  $("#map").height($(window).height()).width($(window).width());
+  $("#map").height($('#container').height()).width($('#container').width());
   
 });
 

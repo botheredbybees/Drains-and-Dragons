@@ -32,7 +32,8 @@ Template.mapdisplay.rendered = function() {
 
 
 
-  $('#map').css('height', window.innerHeight - 82 - 45);
+  $('#map').css('height', $('#container').height()-15);
+  $('#map').css('padding-top', 45);
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
   map = L.map('map', {
@@ -41,7 +42,7 @@ Template.mapdisplay.rendered = function() {
     //attributionControl: false 
   //}).setView([-42.8806, 147.3250], 13);
   }).setView([-42.831024, 147.276568], 13);
-  new L.Control.Zoom({ position: 'topright' }).addTo(map);
+  new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
   map.locate({setView: true, maxZoom: 16});
 
   var basemap = L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
@@ -139,7 +140,7 @@ Template.mapdisplay.rendered = function() {
     });
     var pitgroup = L.layerGroup(layer).addTo(map);
 
-    
+
 // hobart drainage nodes
     layer = [];
     drainnodepoints.forEach(function(point){
@@ -215,7 +216,7 @@ Template.mapdisplay.rendered = function() {
 
 
 
-    L.control.layers(baseMaps, overlayMaps).addTo(map);
+    L.control.layers(baseMaps, overlayMaps, {position: 'bottomright'}).addTo(map);
 
 
 

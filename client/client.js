@@ -41,10 +41,10 @@ Template.mapdisplay.rendered = function() {
     //attributionControl: false 
   //}).setView([-42.8806, 147.3250], 13);
   }).setView([-42.831024, 147.276568], 13);
-  new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
+  new L.Control.Zoom({ position: 'topright' }).addTo(map);
   map.locate({setView: true, maxZoom: 16});
 
-  L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
+  var basemap = L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
 
   var lc = L.control.locate({
         position: 'bottomright',  // set the location of the control
@@ -90,18 +90,132 @@ Template.mapdisplay.rendered = function() {
     //   L.marker(L.latLng(lat,longitude)).addTo(map);
     // });
 
-    var hobartart = Arthobart.find();
-    console.log(Arthobart.all());
-    console.log("Hobart art points");
-    console.log(hobartart);
-    hobartart.forEach(function(point){
-      var lat = parseFloat(point.geometry.coordinates[1]);
-      console.log(lat);
-      var longitude = parseFloat(point.geometry.coordinates[0]);
-      console.log(longitude);
-      L.marker(L.latLng(lat,longitude)).addTo(map);
-    });
+    // var hobartart = Arthobart.find();
+    // console.log(Arthobart.all());
+    // console.log("Hobart art points");
+    // console.log(hobartart);
+    // console.log('hobartartpoints');
+    // console.log(hobartartpoints);
+    // hobartart.forEach(function(point){
+    //   var lat = parseFloat(point.geometry.coordinates[1]);
+    //   console.log(lat);
+    //   var longitude = parseFloat(point.geometry.coordinates[0]);
+    //   console.log(longitude);
+    //   L.marker(L.latLng(lat,longitude)).addTo(map);
+    // });
 
+// glenorcy art
+    layer = [];
+    artpoints.forEach(function(point){
+      var lat = parseFloat(point[1]);
+      //console.log(lat);
+      var longitude = parseFloat(point[0]);
+      //console.log(longitude);
+      layer.push(L.marker(L.latLng(lat,longitude)));
+    });
+    var artgroup = L.layerGroup(layer).addTo(map);
+    // var hobartartgroup = L.layerGroup(layer);
+
+// glenorcy bbqs
+    layer = [];
+    bbqspoints.forEach(function(point){
+      var lat = parseFloat(point[1]);
+      //console.log(lat);
+      var longitude = parseFloat(point[0]);
+      //console.log(longitude);
+      layer.push(L.marker(L.latLng(lat,longitude)));
+    });
+    var bbqgroup = L.layerGroup(layer).addTo(map);
+    // var hobartartgroup = L.layerGroup(layer);
+
+// glenorcy pits
+    layer = [];
+    pitpoints.forEach(function(point){
+      var lat = parseFloat(point[1]);
+      //console.log(lat);
+      var longitude = parseFloat(point[0]);
+      //console.log(longitude);
+      layer.push(L.marker(L.latLng(lat,longitude)));
+    });
+    var pitgroup = L.layerGroup(layer).addTo(map);
+
+    
+// hobart drainage nodes
+    layer = [];
+    drainnodepoints.forEach(function(point){
+      var lat = parseFloat(point[1]);
+      //console.log(lat);
+      var longitude = parseFloat(point[0]);
+      //console.log(longitude);
+      layer.push(L.marker(L.latLng(lat,longitude)));
+    });
+    var drainnodegroup = L.layerGroup(layer).addTo(map);
+
+// hobart bins
+    layer = [];
+    binpoints.forEach(function(point){
+      var lat = parseFloat(point[1]);
+      //console.log(lat);
+      var longitude = parseFloat(point[0]);
+      //console.log(longitude);
+      layer.push(L.marker(L.latLng(lat,longitude)));
+    });
+    var bingroup = L.layerGroup(layer).addTo(map);
+    // var hobartartgroup = L.layerGroup(layer);
+
+
+
+// hobart playgrounds
+    layer = [];
+    playgroundpoints.forEach(function(point){
+      var lat = parseFloat(point[1]);
+      //console.log(lat);
+      var longitude = parseFloat(point[0]);
+      //console.log(longitude);
+      layer.push(L.marker(L.latLng(lat,longitude)));
+    });
+    var playgroundgroup = L.layerGroup(layer).addTo(map);
+
+
+// hobart trees
+    layer = [];
+    treepoints.forEach(function(point){
+      var lat = parseFloat(point[1]);
+      //console.log(lat);
+      var longitude = parseFloat(point[0]);
+      //console.log(longitude);
+      layer.push(L.marker(L.latLng(lat,longitude)));
+    });
+    var treegroup = L.layerGroup(layer).addTo(map);
+
+  // hobart art
+    var layer = [];
+    arthobartpoints.forEach(function(point){
+      var lat = parseFloat(point[1]);
+      //console.log(lat);
+      var longitude = parseFloat(point[0]);
+      //console.log(longitude);
+      layer.push(L.marker(L.latLng(lat,longitude)));
+    });
+    var hobartartgroup = L.layerGroup(layer).addTo(map);
+
+    var baseMaps = {
+      "Environments": basemap
+    };
+    var overlayMaps = {
+        "Glenorchy Art": artgroup,
+        "Glenorchy BBQs": bbqgroup,
+        "Glenorchy Stormater Pits": pitgroup,
+        "Hobart Drains": drainnodegroup,
+        "Hobart Bins": bingroup,
+        "Hobart Playgrounds": playgroundgroup,
+        "Hobart Trees": treegroup,
+        "Hobart Art": hobartartgroup,
+    };
+
+
+
+    L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 
 

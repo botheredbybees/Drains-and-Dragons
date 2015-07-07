@@ -123,3 +123,36 @@ Router.map(function() {
 
 
 8) go have a bex and a good lie down
+
+####################################################################################################################
+
+getting geo coordinates
+
+I've given up on the whole database location thing for this year. For now, i'm feeding the app a bunch of arrays. Build as follows
+
+open the collection in robomongo
+
+run something like: db.getCollection('arthobart').find({},{ "geometry.coordinates": 1, _id: 0 })
+
+*NOTE: this will only give the first 50 unless you page through the results :-(
+
+click on the 'view results in text mode' button in the toolbar
+
+copy and paste into sublime text
+
+remove all the cruft using select, ctl-H (search and replace) mostly. There's one regex for getting rid of the /* 2 */ stuff which looks like: 
+/\* [0-9]* \*/
+
+another scenario you might encounter is a polygon. the regex is
+
+], 
+            \[ 
+                [0-9]*\.[0-9]*, 
+                -[0-9]*\.[0-9]*
+            ]
+
+replace with a ]
+repeat until all done            
+
+save into the lib/table.js file (e.g. lib/art-hobart.js) and then load onto the map in client/client.js
+

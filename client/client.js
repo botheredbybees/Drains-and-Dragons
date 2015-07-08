@@ -32,14 +32,13 @@ Template.mapdisplay.rendered = function() {
 
 
 
-  $('#map').css('height', $('#container').height()-15);
-  $('#map').css('padding-top', 45);
+  $('#map').css('height', $('#container').height());
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
   map = L.map('map', {
     doubleClickZoom: false, 
     zoomControl: false,
-    //attributionControl: false 
+    attributionControl: false 
   //}).setView([-42.8806, 147.3250], 13);
   }).setView([-42.831024, 147.276568], 13);
   new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
@@ -107,116 +106,133 @@ Template.mapdisplay.rendered = function() {
 
 // glenorcy art
     layer = [];
+    var markers = new L.MarkerClusterGroup();
     artpoints.forEach(function(point){
-      var lat = parseFloat(point[1]);
-      //console.log(lat);
-      var longitude = parseFloat(point[0]);
-      //console.log(longitude);
-      layer.push(L.marker(L.latLng(lat,longitude)));
+      lat = parseFloat(point[1]);
+      longitude = parseFloat(point[0]);
+      markers.addLayer(new L.marker(L.latLng(lat,longitude,
+        {title: 'Bakunawa', alt: 'pits'})));
     });
-    var artgroup = L.layerGroup(layer).addTo(map);
-    // var hobartartgroup = L.layerGroup(layer);
-
-// glenorcy bbqs
-    layer = [];
-    bbqspoints.forEach(function(point){
-      var lat = parseFloat(point[1]);
-      //console.log(lat);
-      var longitude = parseFloat(point[0]);
-      //console.log(longitude);
-      layer.push(L.marker(L.latLng(lat,longitude)));
+    var artgroup = map.addLayer(markers);
+    markers.on('click', function (a) {
+      console.log(a);
+      console.log(a.title);
+      Session.set("selectedMonster",'Bakunawa');
+      Session.set("fighting", true);
+      Session.set("monsterSetting", "pits");
+      Router.go('showamonster');
     });
-    var bbqgroup = L.layerGroup(layer).addTo(map);
-    // var hobartartgroup = L.layerGroup(layer);
 
-// glenorcy pits
-    layer = [];
-    pitpoints.forEach(function(point){
-      var lat = parseFloat(point[1]);
-      //console.log(lat);
-      var longitude = parseFloat(point[0]);
-      //console.log(longitude);
-      layer.push(L.marker(L.latLng(lat,longitude)));
-    });
-    var pitgroup = L.layerGroup(layer).addTo(map);
+    // artpoints.forEach(function(point){
+    //   var lat = parseFloat(point[1]);
+    //   //console.log(lat);
+    //   var longitude = parseFloat(point[0]);
+    //   //console.log(longitude);
+    //   layer.push(L.marker(L.latLng(lat,longitude)));
+    // });
+    // var artgroup = L.layerGroup(layer).addTo(map);
+    // // var hobartartgroup = L.layerGroup(layer);
 
+// //  glenorcy bbqs
+//     layer = [];
+//     bbqspoints.forEach(function(point){
+//       var lat = parseFloat(point[1]);
+//       //console.log(lat);
+//       var longitude = parseFloat(point[0]);
+//       //console.log(longitude);
+//       layer.push(L.marker(L.latLng(lat,longitude)));
+//     });
+//     var bbqgroup = L.layerGroup(layer).addTo(map);
+//     // var hobartartgroup = L.layerGroup(layer);
 
-// hobart drainage nodes
-    layer = [];
-    drainnodepoints.forEach(function(point){
-      var lat = parseFloat(point[1]);
-      //console.log(lat);
-      var longitude = parseFloat(point[0]);
-      //console.log(longitude);
-      layer.push(L.marker(L.latLng(lat,longitude)));
-    });
-    var drainnodegroup = L.layerGroup(layer).addTo(map);
-
-// hobart bins
-    layer = [];
-    binpoints.forEach(function(point){
-      var lat = parseFloat(point[1]);
-      //console.log(lat);
-      var longitude = parseFloat(point[0]);
-      //console.log(longitude);
-      layer.push(L.marker(L.latLng(lat,longitude)));
-    });
-    var bingroup = L.layerGroup(layer).addTo(map);
-    // var hobartartgroup = L.layerGroup(layer);
+// // glenorcy pits
+//     layer = [];
+//     pitpoints.forEach(function(point){
+//       var lat = parseFloat(point[1]);
+//       //console.log(lat);
+//       var longitude = parseFloat(point[0]);
+//       //console.log(longitude);
+//       layer.push(L.marker(L.latLng(lat,longitude)));
+//     });
+//     var pitgroup = L.layerGroup(layer).addTo(map);
 
 
+// // hobart drainage nodes
+//     layer = [];
+//     drainnodepoints.forEach(function(point){
+//       var lat = parseFloat(point[1]);
+//       //console.log(lat);
+//       var longitude = parseFloat(point[0]);
+//       //console.log(longitude);
+//       layer.push(L.marker(L.latLng(lat,longitude)));
+//     });
+//     var drainnodegroup = L.layerGroup(layer).addTo(map);
 
-// hobart playgrounds
-    layer = [];
-    playgroundpoints.forEach(function(point){
-      var lat = parseFloat(point[1]);
-      //console.log(lat);
-      var longitude = parseFloat(point[0]);
-      //console.log(longitude);
-      layer.push(L.marker(L.latLng(lat,longitude)));
-    });
-    var playgroundgroup = L.layerGroup(layer).addTo(map);
-
-
-// hobart trees
-    layer = [];
-    treepoints.forEach(function(point){
-      var lat = parseFloat(point[1]);
-      //console.log(lat);
-      var longitude = parseFloat(point[0]);
-      //console.log(longitude);
-      layer.push(L.marker(L.latLng(lat,longitude)));
-    });
-    var treegroup = L.layerGroup(layer).addTo(map);
-
-  // hobart art
-    var layer = [];
-    arthobartpoints.forEach(function(point){
-      var lat = parseFloat(point[1]);
-      //console.log(lat);
-      var longitude = parseFloat(point[0]);
-      //console.log(longitude);
-      layer.push(L.marker(L.latLng(lat,longitude)));
-    });
-    var hobartartgroup = L.layerGroup(layer).addTo(map);
-
-    var baseMaps = {
-      "Environments": basemap
-    };
-    var overlayMaps = {
-        "Glenorchy Art": artgroup,
-        "Glenorchy BBQs": bbqgroup,
-        "Glenorchy Stormater Pits": pitgroup,
-        "Hobart Drains": drainnodegroup,
-        "Hobart Bins": bingroup,
-        "Hobart Playgrounds": playgroundgroup,
-        "Hobart Trees": treegroup,
-        "Hobart Art": hobartartgroup,
-    };
+// // hobart bins
+//     layer = [];
+//     binpoints.forEach(function(point){
+//       var lat = parseFloat(point[1]);
+//       //console.log(lat);
+//       var longitude = parseFloat(point[0]);
+//       //console.log(longitude);
+//       layer.push(L.marker(L.latLng(lat,longitude)));
+//     });
+//     var bingroup = L.layerGroup(layer).addTo(map);
+//     // var hobartartgroup = L.layerGroup(layer);
 
 
 
-    L.control.layers(baseMaps, overlayMaps, {position: 'bottomright'}).addTo(map);
+// // hobart playgrounds
+//     layer = [];
+//     playgroundpoints.forEach(function(point){
+//       var lat = parseFloat(point[1]);
+//       //console.log(lat);
+//       var longitude = parseFloat(point[0]);
+//       //console.log(longitude);
+//       layer.push(L.marker(L.latLng(lat,longitude)));
+//     });
+//     var playgroundgroup = L.layerGroup(layer).addTo(map);
+
+
+// // hobart trees
+//     layer = [];
+//     treepoints.forEach(function(point){
+//       var lat = parseFloat(point[1]);
+//       //console.log(lat);
+//       var longitude = parseFloat(point[0]);
+//       //console.log(longitude);
+//       layer.push(L.marker(L.latLng(lat,longitude)));
+//     });
+//     var treegroup = L.layerGroup(layer).addTo(map);
+
+//   // hobart art
+//     var layer = [];
+//     arthobartpoints.forEach(function(point){
+//       var lat = parseFloat(point[1]);
+//       //console.log(lat);
+//       var longitude = parseFloat(point[0]);
+//       //console.log(longitude);
+//       layer.push(L.marker(L.latLng(lat,longitude)));
+//     });
+//     var hobartartgroup = L.layerGroup(layer).addTo(map);
+
+//     var baseMaps = {
+//       "Environments": basemap
+//     };
+//     var overlayMaps = {
+//         "Glenorchy Art": artgroup,
+//         "Glenorchy BBQs": bbqgroup,
+//         "Glenorchy Stormater Pits": pitgroup,
+//         "Hobart Drains": drainnodegroup,
+//         "Hobart Bins": bingroup,
+//         "Hobart Playgrounds": playgroundgroup,
+//         "Hobart Trees": treegroup,
+//         "Hobart Art": hobartartgroup,
+//     };
+
+
+
+//     L.control.layers(baseMaps, overlayMaps, {position: 'bottomright'}).addTo(map);
 
 
 

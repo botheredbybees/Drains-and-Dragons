@@ -18,6 +18,25 @@ Template.showamonster.helpers({
   },
   fighting: function() {
   		return Session.get("fighting");
+  }, 
+  getprefix: function() {
+  	var firstletter = Session.get("selectedMonster");
+  	var prefix = "A ";  	
+	switch (firstletter.charAt(0)) {
+		case 'A':
+		case 'E':
+		case 'I':
+		case 'O':
+		case 'U':
+			prefix = 'An ';
+			break;
+		default:
+			prefix = 'A '; 
+	}
+	if (firstletter.slice(-1) == 's') {
+		prefix = ''; // it's a plural
+	}
+	return prefix;
   }
 });
 

@@ -110,16 +110,21 @@ Template.mapdisplay.rendered = function() {
     artpoints.forEach(function(point){
       lat = parseFloat(point[1]);
       longitude = parseFloat(point[0]);
-      markers.addLayer(new L.marker(L.latLng(lat,longitude,
-        {title: 'Bakunawa', alt: 'pits'})));
+      markers.addLayer(new L.marker(L.latLng(lat,longitude)));
     });
     var artgroup = map.addLayer(markers);
     markers.on('click', function (a) {
-      console.log(a);
-      console.log(a.title);
-      Session.set("selectedMonster",'Bakunawa');
+      monsternum = Math.floor((Math.random() * 14));
+      //console.log('monsternum: '+ monsternum);
+      var suspects = Monsters.planar();
+      //console.log(suspects);
+      var opponent = suspects[monsternum];
+      //console.log(opponent);
+      Session.set("selectedMonster",opponent.name);
       Session.set("fighting", true);
-      Session.set("monsterSetting", "pits");
+      Session.set("monsterSetting", "planar");
+      Session.set("monsterfile","planar_powers");
+      Session.set("playerhealth",100);
       Router.go('showamonster');
     });
 
@@ -133,6 +138,29 @@ Template.mapdisplay.rendered = function() {
     // var artgroup = L.layerGroup(layer).addTo(map);
     // // var hobartartgroup = L.layerGroup(layer);
 
+
+    var bbqmarkers = new L.MarkerClusterGroup();
+    bbqspoints.forEach(function(point){
+      lat = parseFloat(point[1]);
+      longitude = parseFloat(point[0]);
+      bbqmarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+    });
+    var bbqgroup = map.addLayer(bbqmarkers);
+    bbqmarkers.on('click', function (a) {
+      monsternum = Math.floor((Math.random() * 18));
+      //console.log('monsternum: '+ monsternum);
+      var suspects = Monsters.undead();
+      //console.log(suspects);
+      var opponent = suspects[monsternum];
+      //console.log(opponent);
+      Session.set("selectedMonster",opponent.name);
+      Session.set("fighting", true);
+      Session.set("monsterSetting", "bbqs");
+      Session.set("monsterfile","legions_undead");
+      Session.set("playerhealth",100);
+      Router.go('showamonster');
+    });
+
 // //  glenorcy bbqs
 //     layer = [];
 //     bbqspoints.forEach(function(point){
@@ -144,6 +172,29 @@ Template.mapdisplay.rendered = function() {
 //     });
 //     var bbqgroup = L.layerGroup(layer).addTo(map);
 //     // var hobartartgroup = L.layerGroup(layer);
+
+
+    var pitmarkers = new L.MarkerClusterGroup();
+    pitpoints.forEach(function(point){
+      lat = parseFloat(point[1]);
+      longitude = parseFloat(point[0]);
+      pitmarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+    });
+    var bbqgroup = map.addLayer(pitmarkers);
+    pitmarkers.on('click', function (a) {
+      monsternum = Math.floor((Math.random() * 20));
+      //console.log('monsternum: '+ monsternum);
+      var suspects = Monsters.swamp();
+      //console.log(suspects);
+      var opponent = suspects[monsternum];
+      //console.log(opponent);
+      Session.set("selectedMonster",opponent.name);
+      Session.set("fighting", true);
+      Session.set("monsterSetting", "pits");
+      Session.set("monsterfile","denizens_swamp");
+      Session.set("playerhealth",100);
+      Router.go('showamonster');
+    });
 
 // // glenorcy pits
 //     layer = [];
@@ -157,6 +208,29 @@ Template.mapdisplay.rendered = function() {
 //     var pitgroup = L.layerGroup(layer).addTo(map);
 
 
+    var nodemarkers = new L.MarkerClusterGroup();
+    drainnodepoints.forEach(function(point){
+      lat = parseFloat(point[1]);
+      longitude = parseFloat(point[0]);
+      nodemarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+    });
+    var bbqgroup = map.addLayer(nodemarkers);
+    nodemarkers.on('click', function (a) {
+      monsternum = Math.floor((Math.random() * 19));
+      //console.log('monsternum: '+ monsternum);
+      var suspects = Monsters.cavern();
+      //console.log(suspects);
+      var opponent = suspects[monsternum];
+      //console.log(opponent);
+      Session.set("selectedMonster",opponent.name);
+      Session.set("fighting", true);
+      Session.set("monsterSetting", "nodes");
+      Session.set("monsterfile","cavern_dwellers");
+      Session.set("playerhealth",100);
+      Router.go('showamonster');
+    });
+
+
 // // hobart drainage nodes
 //     layer = [];
 //     drainnodepoints.forEach(function(point){
@@ -167,6 +241,29 @@ Template.mapdisplay.rendered = function() {
 //       layer.push(L.marker(L.latLng(lat,longitude)));
 //     });
 //     var drainnodegroup = L.layerGroup(layer).addTo(map);
+
+
+    var binmarkers = new L.MarkerClusterGroup();
+    binpoints.forEach(function(point){
+      lat = parseFloat(point[1]);
+      longitude = parseFloat(point[0]);
+      binmarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+    });
+    var bbqgroup = map.addLayer(binmarkers);
+    binmarkers.on('click', function (a) {
+      monsternum = Math.floor((Math.random() * 19));
+      //console.log('monsternum: '+ monsternum);
+      var suspects = Monsters.bin();
+      //console.log(suspects);
+      var opponent = suspects[monsternum];
+      //console.log(opponent);
+      Session.set("selectedMonster",opponent.name);
+      Session.set("fighting", true);
+      Session.set("monsterSetting", "bins");
+      Session.set("monsterfile","ravenous_hordes");
+      Session.set("playerhealth",100);
+      Router.go('showamonster');
+    });
 
 // // hobart bins
 //     layer = [];
@@ -179,6 +276,29 @@ Template.mapdisplay.rendered = function() {
 //     });
 //     var bingroup = L.layerGroup(layer).addTo(map);
 //     // var hobartartgroup = L.layerGroup(layer);
+
+
+    var playgroundmarkers = new L.MarkerClusterGroup();
+    playgroundpoints.forEach(function(point){
+      lat = parseFloat(point[1]);
+      longitude = parseFloat(point[0]);
+      playgroundmarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+    });
+    var bbqgroup = map.addLayer(playgroundmarkers);
+    playgroundmarkers.on('click', function (a) {
+      monsternum = Math.floor((Math.random() * 13));
+      //console.log('monsternum: '+ monsternum);
+      var suspects = Monsters.depth();
+      //console.log(suspects);
+      var opponent = suspects[monsternum];
+      //console.log(opponent);
+      Session.set("selectedMonster",opponent.name);
+      Session.set("fighting", true);
+      Session.set("monsterSetting", "playgrounds");
+      Session.set("monsterfile","lower_depths");
+      Session.set("playerhealth",100);
+      Router.go('showamonster');
+    });
 
 
 
@@ -194,6 +314,29 @@ Template.mapdisplay.rendered = function() {
 //     var playgroundgroup = L.layerGroup(layer).addTo(map);
 
 
+    var treemarkers = new L.MarkerClusterGroup();
+    treepoints.forEach(function(point){
+      lat = parseFloat(point[1]);
+      longitude = parseFloat(point[0]);
+      treemarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+    });
+    var bbqgroup = map.addLayer(treemarkers);
+    treemarkers.on('click', function (a) {
+      monsternum = Math.floor((Math.random() * 18));
+      //console.log('monsternum: '+ monsternum);
+      var suspects = Monsters.woods();
+      //console.log(suspects);
+      var opponent = suspects[monsternum];
+      //console.log(opponent);
+      Session.set("selectedMonster",opponent.name);
+      Session.set("fighting", true);
+      Session.set("monsterSetting", "trees");
+      Session.set("monsterfile","dark_woods");
+      Session.set("playerhealth",100);
+      Router.go('showamonster');
+    });
+
+
 // // hobart trees
 //     layer = [];
 //     treepoints.forEach(function(point){
@@ -204,6 +347,29 @@ Template.mapdisplay.rendered = function() {
 //       layer.push(L.marker(L.latLng(lat,longitude)));
 //     });
 //     var treegroup = L.layerGroup(layer).addTo(map);
+
+
+    var hartmarkers = new L.MarkerClusterGroup();
+    arthobartpoints.forEach(function(point){
+      lat = parseFloat(point[1]);
+      longitude = parseFloat(point[0]);
+      hartmarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+    });
+    var bbqgroup = map.addLayer(hartmarkers);
+    hartmarkers.on('click', function (a) {
+      monsternum = Math.floor((Math.random() * 14));
+      //console.log('monsternum: '+ monsternum);
+      var suspects = Monsters.planar();
+      //console.log(suspects);
+      var opponent = suspects[monsternum];
+      //console.log(opponent);
+      Session.set("selectedMonster",opponent.name);
+      Session.set("fighting", true);
+      Session.set("monsterSetting", "planar");
+      Session.set("monsterfile","planar_powers");
+      Session.set("playerhealth",100);
+      Router.go('showamonster');
+    });
 
 //   // hobart art
 //     var layer = [];

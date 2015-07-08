@@ -10,7 +10,8 @@
       <div class="bg-image {{session "monsterSetting"}}"></div>
       
       <div class="description-about">
-        <h1>{{getmymonster.name}}</h1>
+        <h2>You see...</h2>
+        <h1>{{getprefix}}{{getmymonster.name}}</h1>
         <p class="description-recipe">{{getmymonster.qualities}}... with an urge to {{getmymonster.instinct}}</p>
         
       {{#if fighting}}
@@ -59,7 +60,7 @@
       </div>
       <img src='/img/monsters/640x480/{{session "monsterfile"}}.png' alt="{{session "monsterfile"}}">
         <div class="description-about">
-          <h2>{{getmymonster.name}}</h2>
+          <h2>The {{getmymonster.name}}</h2>
           <p class="description-recipe">{{getmymonster.description}}</p>
           <p><br></p>
 
@@ -162,7 +163,7 @@
         
         <p class="description-recipe">
           
-          <h2>{{getmymonster.name}} Died</h2>
+          <h2>The {{getmymonster.name}} Died</h2>
           <div>&nbsp;</div>
           
       <div class="bg-image" style="background-image: url('/img/monsters/640x480/{{session "monsterfile"}}_dead.png')"></div>
@@ -203,7 +204,7 @@
 <template name="you_died">
 
   <div class="page art">
-    {{>nav title="..."}}
+    {{>nav title="You Died :-("}}
     <!--div class="image-artwork" style="background-image: url('{{artworkImage recipe=this size='full'}}')"></div-->
     <div class="content-scrollable">      
       
@@ -215,7 +216,7 @@
         
         <p class="description-recipe">
           
-          <h2>You Died :-(</h2>
+          <h2>The {{getmymonster.name}} killed you!</h2>
           <div>&nbsp;</div>
           
       <div class="bg-image" style="background-image: url('/img/monsters/640x480/RIP.png')"></div>

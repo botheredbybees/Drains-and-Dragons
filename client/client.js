@@ -106,11 +106,28 @@ Template.mapdisplay.rendered = function() {
 
 // glenorcy art
     layer = [];
-    var markers = new L.MarkerClusterGroup();
+    var planarIcon = L.icon({
+      iconUrl: 'img/monsters/planar_powers_icon.png',
+      //shadowUrl: 'img/monsters/planar_powers_icon_shadow.png',
+
+      iconSize:     [40, 30], // size of the icon
+      //shadowSize:   [54, 60], // size of the shadow
+      iconAnchor:   [20, 30], // point of the icon which will correspond to marker's location
+      //shadowAnchor: [25, 45],  // the same for the shadow
+      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    var markers = new L.MarkerClusterGroup({ 
+        iconCreateFunction: function (cluster) {
+            var markers = cluster.getAllChildMarkers();
+            var html = '<div class="icon-gartcircle">' + markers.length + '</div>';
+            return L.divIcon({ html: html, className: 'mycluster', iconSize: L.point(40, 40) });
+        },
+        spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false, maxClusterRadius: 10 
+    });
     artpoints.forEach(function(point){
       lat = parseFloat(point[1]);
       longitude = parseFloat(point[0]);
-      markers.addLayer(new L.marker(L.latLng(lat,longitude)));
+      markers.addLayer(new L.marker(L.latLng(lat,longitude), {icon: planarIcon}));
     });
     var artgroup = map.addLayer(markers);
     markers.on('click', function (a) {
@@ -139,46 +156,93 @@ Template.mapdisplay.rendered = function() {
     // // var hobartartgroup = L.layerGroup(layer);
 
 
-    var bbqmarkers = new L.MarkerClusterGroup();
+    var undeadIcon = L.icon({
+        iconUrl: 'img/monsters/legions_undead_icon.png',
+        //shadowUrl: 'img/monsters/planar_powers_icon_shadow.png',
+
+        iconSize:     [40, 30], // size of the icon
+        //shadowSize:   [54, 60], // size of the shadow
+        iconAnchor:   [20, 30], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [25, 45],  // the same for the shadow
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    // var bbqmarkers = new L.MarkerClusterGroup({ 
+    //     iconCreateFunction: function (cluster) {
+    //         var markers = cluster.getAllChildMarkers();
+    //         var html = '<div class="icon-bbqcircle">' + markers.length + '</div>';
+    //         return L.divIcon({ html: html, className: 'mycluster', iconSize: L.point(40, 40) });
+    //     },
+    //     spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false, maxClusterRadius: 80 
+    // });
+    // bbqspoints.forEach(function(point){
+    //   lat = parseFloat(point[1]);
+    //   longitude = parseFloat(point[0]);
+    //   bbqmarkers.addLayer(new L.marker(L.latLng(lat,longitude), {icon: undeadIcon}));
+    // });
+    // var bbqgroup = map.addLayer(bbqmarkers);
+    // bbqmarkers.on('click', function (a) {
+    //   monsternum = Math.floor((Math.random() * 18));
+    //   //console.log('monsternum: '+ monsternum);
+    //   var suspects = Monsters.undead();
+    //   //console.log(suspects);
+    //   var opponent = suspects[monsternum];
+    //   //console.log(opponent);
+    //   Session.set("selectedMonster",opponent.name);
+    //   Session.set("fighting", true);
+    //   Session.set("monsterSetting", "bbqs");
+    //   Session.set("monsterfile","legions_undead");
+    //   Session.set("playerhealth",100);
+    //   Router.go('showamonster');
+    // });
+
+//  glenorcy bbqs
+    bbqmarkers = [];
     bbqspoints.forEach(function(point){
-      lat = parseFloat(point[1]);
-      longitude = parseFloat(point[0]);
-      bbqmarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+      var lat = parseFloat(point[1]);
+      //console.log(lat);
+      var longitude = parseFloat(point[0]);
+      //console.log(longitude);
+      L.marker(L.latLng(lat,longitude), {icon: undeadIcon}).addTo(map).on('click', function (a) {
+        monsternum = Math.floor((Math.random() * 18));
+        //console.log('monsternum: '+ monsternum);
+        var suspects = Monsters.undead();
+        //console.log(suspects);
+        var opponent = suspects[monsternum];
+        //console.log(opponent);
+        Session.set("selectedMonster",opponent.name);
+        Session.set("fighting", true);
+        Session.set("monsterSetting", "bbqs");
+        Session.set("monsterfile","legions_undead");
+        Session.set("playerhealth",100);
+        Router.go('showamonster');
+      });
     });
-    var bbqgroup = map.addLayer(bbqmarkers);
-    bbqmarkers.on('click', function (a) {
-      monsternum = Math.floor((Math.random() * 18));
-      //console.log('monsternum: '+ monsternum);
-      var suspects = Monsters.undead();
-      //console.log(suspects);
-      var opponent = suspects[monsternum];
-      //console.log(opponent);
-      Session.set("selectedMonster",opponent.name);
-      Session.set("fighting", true);
-      Session.set("monsterSetting", "bbqs");
-      Session.set("monsterfile","legions_undead");
-      Session.set("playerhealth",100);
-      Router.go('showamonster');
+    // var hobartartgroup = L.layerGroup(layer);
+
+
+    
+    var swampIcon = L.icon({
+      iconUrl: 'img/monsters/swamp_icon.png',
+      //shadowUrl: 'img/monsters/planar_powers_icon_shadow.png',
+
+      iconSize:     [40, 30], // size of the icon
+      //shadowSize:   [54, 60], // size of the shadow
+      iconAnchor:   [20, 30], // point of the icon which will correspond to marker's location
+      //shadowAnchor: [25, 45],  // the same for the shadow
+      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
-
-// //  glenorcy bbqs
-//     layer = [];
-//     bbqspoints.forEach(function(point){
-//       var lat = parseFloat(point[1]);
-//       //console.log(lat);
-//       var longitude = parseFloat(point[0]);
-//       //console.log(longitude);
-//       layer.push(L.marker(L.latLng(lat,longitude)));
-//     });
-//     var bbqgroup = L.layerGroup(layer).addTo(map);
-//     // var hobartartgroup = L.layerGroup(layer);
-
-
-    var pitmarkers = new L.MarkerClusterGroup();
+    var pitmarkers = new L.MarkerClusterGroup({ 
+        iconCreateFunction: function (cluster) {
+            var markers = cluster.getAllChildMarkers();
+            var html = '<div class="icon-pitcircle">' + markers.length + '</div>';
+            return L.divIcon({ html: html, className: 'mycluster', iconSize: L.point(40, 40) });
+        },
+        spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false, maxClusterRadius: 10 
+    });
     pitpoints.forEach(function(point){
       lat = parseFloat(point[1]);
       longitude = parseFloat(point[0]);
-      pitmarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+      pitmarkers.addLayer(new L.marker(L.latLng(lat,longitude), {icon: swampIcon}));
     });
     var bbqgroup = map.addLayer(pitmarkers);
     pitmarkers.on('click', function (a) {
@@ -196,25 +260,41 @@ Template.mapdisplay.rendered = function() {
       Router.go('showamonster');
     });
 
-// // glenorcy pits
-//     layer = [];
-//     pitpoints.forEach(function(point){
-//       var lat = parseFloat(point[1]);
-//       //console.log(lat);
-//       var longitude = parseFloat(point[0]);
-//       //console.log(longitude);
-//       layer.push(L.marker(L.latLng(lat,longitude)));
-//     });
-//     var pitgroup = L.layerGroup(layer).addTo(map);
+// // // glenorcy pits
+// //     layer = [];
+// //     pitpoints.forEach(function(point){
+// //       var lat = parseFloat(point[1]);
+// //       //console.log(lat);
+// //       var longitude = parseFloat(point[0]);
+// //       //console.log(longitude);
+// //       layer.push(L.marker(L.latLng(lat,longitude)));
+// //     });
+// //     var pitgroup = L.layerGroup(layer).addTo(map);
 
+    var cavernIcon = L.icon({
+      iconUrl: 'img/monsters/cavern_icon.png',
+      //shadowUrl: 'img/monsters/planar_powers_icon_shadow.png',
 
-    var nodemarkers = new L.MarkerClusterGroup();
+      iconSize:     [40, 30], // size of the icon
+      //shadowSize:   [54, 60], // size of the shadow
+      iconAnchor:   [20, 30], // point of the icon which will correspond to marker's location
+      //shadowAnchor: [25, 45],  // the same for the shadow
+      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    var nodemarkers = new L.MarkerClusterGroup({ 
+        iconCreateFunction: function (cluster) {
+            var markers = cluster.getAllChildMarkers();
+            var html = '<div class="icon-caverncircle">' + markers.length + '</div>';
+            return L.divIcon({ html: html, className: 'mycluster', iconSize: L.point(40, 40) });
+        },
+        spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false, maxClusterRadius: 100 
+    });
     drainnodepoints.forEach(function(point){
       lat = parseFloat(point[1]);
       longitude = parseFloat(point[0]);
-      nodemarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+      nodemarkers.addLayer(new L.marker(L.latLng(lat,longitude), {icon: cavernIcon}));
     });
-    var bbqgroup = map.addLayer(nodemarkers);
+    var nodegroup = map.addLayer(nodemarkers);
     nodemarkers.on('click', function (a) {
       monsternum = Math.floor((Math.random() * 19));
       //console.log('monsternum: '+ monsternum);
@@ -231,23 +311,39 @@ Template.mapdisplay.rendered = function() {
     });
 
 
-// // hobart drainage nodes
-//     layer = [];
-//     drainnodepoints.forEach(function(point){
-//       var lat = parseFloat(point[1]);
-//       //console.log(lat);
-//       var longitude = parseFloat(point[0]);
-//       //console.log(longitude);
-//       layer.push(L.marker(L.latLng(lat,longitude)));
-//     });
-//     var drainnodegroup = L.layerGroup(layer).addTo(map);
+// // // hobart drainage nodes
+// //     layer = [];
+// //     drainnodepoints.forEach(function(point){
+// //       var lat = parseFloat(point[1]);
+// //       //console.log(lat);
+// //       var longitude = parseFloat(point[0]);
+// //       //console.log(longitude);
+// //       layer.push(L.marker(L.latLng(lat,longitude)));
+// //     });
+// //     var drainnodegroup = L.layerGroup(layer).addTo(map);
 
+    var binIcon = L.icon({
+      iconUrl: 'img/monsters/bin_icon.png',
+      //shadowUrl: 'img/monsters/planar_powers_icon_shadow.png',
 
-    var binmarkers = new L.MarkerClusterGroup();
+      iconSize:     [40, 30], // size of the icon
+      //shadowSize:   [54, 60], // size of the shadow
+      iconAnchor:   [20, 30], // point of the icon which will correspond to marker's location
+      //shadowAnchor: [25, 45],  // the same for the shadow
+      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    var binmarkers = new L.MarkerClusterGroup({ 
+        iconCreateFunction: function (cluster) {
+            var markers = cluster.getAllChildMarkers();
+            var html = '<div class="icon-bincircle">' + markers.length + '</div>';
+            return L.divIcon({ html: html, className: 'mycluster', iconSize: L.point(40, 40) });
+        },
+        spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false, maxClusterRadius: 100 
+    });
     binpoints.forEach(function(point){
       lat = parseFloat(point[1]);
       longitude = parseFloat(point[0]);
-      binmarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+      binmarkers.addLayer(new L.marker(L.latLng(lat,longitude), {icon: binIcon}));
     });
     var bbqgroup = map.addLayer(binmarkers);
     binmarkers.on('click', function (a) {
@@ -265,24 +361,41 @@ Template.mapdisplay.rendered = function() {
       Router.go('showamonster');
     });
 
-// // hobart bins
-//     layer = [];
-//     binpoints.forEach(function(point){
-//       var lat = parseFloat(point[1]);
-//       //console.log(lat);
-//       var longitude = parseFloat(point[0]);
-//       //console.log(longitude);
-//       layer.push(L.marker(L.latLng(lat,longitude)));
-//     });
-//     var bingroup = L.layerGroup(layer).addTo(map);
-//     // var hobartartgroup = L.layerGroup(layer);
+// // // hobart bins
+// //     layer = [];
+// //     binpoints.forEach(function(point){
+// //       var lat = parseFloat(point[1]);
+// //       //console.log(lat);
+// //       var longitude = parseFloat(point[0]);
+// //       //console.log(longitude);
+// //       layer.push(L.marker(L.latLng(lat,longitude)));
+// //     });
+// //     var bingroup = L.layerGroup(layer).addTo(map);
+// //     // var hobartartgroup = L.layerGroup(layer);
 
 
-    var playgroundmarkers = new L.MarkerClusterGroup();
+    var playgroundIcon = L.icon({
+      iconUrl: 'img/monsters/lower_icon.png',
+      //shadowUrl: 'img/monsters/planar_powers_icon_shadow.png',
+
+      iconSize:     [40, 30], // size of the icon
+      //shadowSize:   [54, 60], // size of the shadow
+      iconAnchor:   [20, 30], // point of the icon which will correspond to marker's location
+      //shadowAnchor: [25, 45],  // the same for the shadow
+      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    var playgroundmarkers = new L.MarkerClusterGroup({ 
+        iconCreateFunction: function (cluster) {
+            var markers = cluster.getAllChildMarkers();
+            var html = '<div class="icon-playgroundcircle">' + markers.length + '</div>';
+            return L.divIcon({ html: html, className: 'mycluster', iconSize: L.point(40, 40) });
+        },
+        spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false, maxClusterRadius: 100 
+    });
     playgroundpoints.forEach(function(point){
       lat = parseFloat(point[1]);
       longitude = parseFloat(point[0]);
-      playgroundmarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+      playgroundmarkers.addLayer(new L.marker(L.latLng(lat,longitude), {icon: playgroundIcon}));
     });
     var bbqgroup = map.addLayer(playgroundmarkers);
     playgroundmarkers.on('click', function (a) {
@@ -302,23 +415,40 @@ Template.mapdisplay.rendered = function() {
 
 
 
-// // hobart playgrounds
-//     layer = [];
-//     playgroundpoints.forEach(function(point){
-//       var lat = parseFloat(point[1]);
-//       //console.log(lat);
-//       var longitude = parseFloat(point[0]);
-//       //console.log(longitude);
-//       layer.push(L.marker(L.latLng(lat,longitude)));
-//     });
-//     var playgroundgroup = L.layerGroup(layer).addTo(map);
+// // // hobart playgrounds
+// //     layer = [];
+// //     playgroundpoints.forEach(function(point){
+// //       var lat = parseFloat(point[1]);
+// //       //console.log(lat);
+// //       var longitude = parseFloat(point[0]);
+// //       //console.log(longitude);
+// //       layer.push(L.marker(L.latLng(lat,longitude)));
+// //     });
+// //     var playgroundgroup = L.layerGroup(layer).addTo(map);
 
 
-    var treemarkers = new L.MarkerClusterGroup();
+    var treeIcon = L.icon({
+      iconUrl: 'img/monsters/woods_icon.png',
+      //shadowUrl: 'img/monsters/planar_powers_icon_shadow.png',
+
+      iconSize:     [40, 30], // size of the icon
+      //shadowSize:   [54, 60], // size of the shadow
+      iconAnchor:   [20, 30], // point of the icon which will correspond to marker's location
+      //shadowAnchor: [25, 45],  // the same for the shadow
+      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    var treemarkers = new L.MarkerClusterGroup({ 
+        iconCreateFunction: function (cluster) {
+            var markers = cluster.getAllChildMarkers();
+            var html = '<div class="icon-treecircle">' + markers.length + '</div>';
+            return L.divIcon({ html: html, className: 'mycluster', iconSize: L.point(40, 40) });
+        },
+        spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false, maxClusterRadius: 10 
+    });
     treepoints.forEach(function(point){
       lat = parseFloat(point[1]);
       longitude = parseFloat(point[0]);
-      treemarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+      treemarkers.addLayer(new L.marker(L.latLng(lat,longitude), {icon: treeIcon}));
     });
     var bbqgroup = map.addLayer(treemarkers);
     treemarkers.on('click', function (a) {
@@ -337,23 +467,31 @@ Template.mapdisplay.rendered = function() {
     });
 
 
-// // hobart trees
-//     layer = [];
-//     treepoints.forEach(function(point){
-//       var lat = parseFloat(point[1]);
-//       //console.log(lat);
-//       var longitude = parseFloat(point[0]);
-//       //console.log(longitude);
-//       layer.push(L.marker(L.latLng(lat,longitude)));
-//     });
-//     var treegroup = L.layerGroup(layer).addTo(map);
+// // // hobart trees
+// //     layer = [];
+// //     treepoints.forEach(function(point){
+// //       var lat = parseFloat(point[1]);
+// //       //console.log(lat);
+// //       var longitude = parseFloat(point[0]);
+// //       //console.log(longitude);
+// //       layer.push(L.marker(L.latLng(lat,longitude)));
+// //     });
+// //     var treegroup = L.layerGroup(layer).addTo(map);
 
 
-    var hartmarkers = new L.MarkerClusterGroup();
+    
+    var hartmarkers = new L.MarkerClusterGroup({ 
+        iconCreateFunction: function (cluster) {
+            var markers = cluster.getAllChildMarkers();
+            var html = '<div class="icon-gartcircle">' + markers.length + '</div>';
+            return L.divIcon({ html: html, className: 'mycluster', iconSize: L.point(40, 40) });
+        },
+        spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false, maxClusterRadius: 10 
+    });
     arthobartpoints.forEach(function(point){
       lat = parseFloat(point[1]);
       longitude = parseFloat(point[0]);
-      hartmarkers.addLayer(new L.marker(L.latLng(lat,longitude)));
+      hartmarkers.addLayer(new L.marker(L.latLng(lat,longitude), {icon: planarIcon}));
     });
     var bbqgroup = map.addLayer(hartmarkers);
     hartmarkers.on('click', function (a) {

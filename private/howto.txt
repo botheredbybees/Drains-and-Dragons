@@ -13,10 +13,10 @@ meteor --port 3005
 #####################################################################
 
 to back up your local database cd to the application root and run:
- mongodump -h 127.0.0.1:3001 -d meteor -o data/mongodb-backup
+ mongodump -h 127.0.0.1:3001 -d meteor -o private/mongodb-backup
 
 to restore, run:
-mongorestore --port 3001 data/mongodb-backup/meteor
+mongorestore --port 3001 private/mongodb-backup/meteor
 
 ######################################################################
 
@@ -60,12 +60,16 @@ you will get something back that looks like
 mongodb://client-c13e8730:ce1ba416-82e7-3ac5-59b4-e3756c96415a@production-db-c2.meteor.io:27017/drains-and-dungeons_meteor_com
 
 copy out the bits and make a command like:
-mongorestore -u client-c13e8730 -p ce1ba416-82e7-3ac5-59b4-e3756c96415a -h production-db-c2.meteor.io:27017 -db drains-and-dungeons_meteor_com data/mongodb-backup/meteor/
+mongorestore -u client-c13e8730 -p ce1ba416-82e7-3ac5-59b4-e3756c96415a -h production-db-c2.meteor.io:27017 -db drains-and-dungeons_meteor_com private/mongodb-backup/meteor/
 
 
 
 
 ######################################################################
+
+getting the whole 'display from database' thing happening... the documentation:
+http://docs.meteor.com/#/full/dataandsecurity
+
 
 getting the whole 'display from database' thing happening... by example
 

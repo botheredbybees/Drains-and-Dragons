@@ -42,7 +42,7 @@ Template.mapdisplay.rendered = function() {
   //}).setView([-42.8806, 147.3250], 13);
   }).setView([-42.831024, 147.276568], 13);
   new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
-  map.locate({setView: true, maxZoom: 16});
+  //map.locate({setView: true, maxZoom: 16}); // turn off location tracking for demo
 
   var basemap = L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
 
